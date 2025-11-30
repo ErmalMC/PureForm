@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Application",
+    "\\Domain",
+    "\\Domain\\Entities"
   ],
-  "SelectedNode": "\\.gitattributes",
+  "SelectedNode": "\\Application\\obj",
   "PreviewInSolutionExplorer": false
 }

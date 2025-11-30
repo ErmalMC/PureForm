@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    internal class User
+    public class User
     {
+        public Guid Id { get; set; }
+        public string Email { get; set; } = string.Empty;
+        public string FullName { get; set; } = string.Empty;
+
+        public ICollection<WorkoutPlan> WorkoutPlans { get; set; }
+        public ICollection<NutritionLog> NutritionLogs { get; set; }
     }
 }
+

@@ -6,7 +6,19 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    internal class NutritionLog
+    public class NutritionLog
     {
+        public Guid Id { get; set; }
+
+        public Guid UserId { get; set; }
+        public User User { get; set; }
+
+        public DateTime Date { get; set; }
+        public string FoodName { get; set; } = string.Empty;
+        public int Calories { get; set; }
+        public int Protein { get; set; }
+        public int Carbs { get; set; }
+        public int Fat { get; set; }
     }
 }
+
