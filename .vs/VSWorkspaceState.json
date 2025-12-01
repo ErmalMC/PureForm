@@ -2,9 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\Application",
-    "\\Domain",
-    "\\Domain\\Entities"
+    "\\Application\\DTOs"
   ],
-  "SelectedNode": "\\Application\\obj",
+  "SelectedNode": "\\PureForm.sln",
   "PreviewInSolutionExplorer": false
 }
