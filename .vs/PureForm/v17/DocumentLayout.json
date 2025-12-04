@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "E:\\Coding\\Project_Files\\PureForm\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E78FBACC-0D55-499B-8047-1465FD644098}|Application\\Application.csproj|e:\\coding\\project_files\\pureform\\application\\dtos\\workoutplandto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E78FBACC-0D55-499B-8047-1465FD644098}|Application\\Application.csproj|solutionrelative:application\\dtos\\workoutplandto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E78FBACC-0D55-499B-8047-1465FD644098}|Application\\Application.csproj|e:\\coding\\project_files\\pureform\\application\\interfaces\\repositories\\inutritionlogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E78FBACC-0D55-499B-8047-1465FD644098}|Application\\Application.csproj|solutionrelative:application\\interfaces\\repositories\\inutritionlogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E78FBACC-0D55-499B-8047-1465FD644098}|Application\\Application.csproj|e:\\coding\\project_files\\pureform\\application\\dtos\\nutritionlogdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E78FBACC-0D55-499B-8047-1465FD644098}|Application\\Application.csproj|solutionrelative:application\\dtos\\nutritionlogdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E78FBACC-0D55-499B-8047-1465FD644098}|Application\\Application.csproj|e:\\coding\\project_files\\pureform\\application\\interfaces\\repositories\\iexerciserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E78FBACC-0D55-499B-8047-1465FD644098}|Application\\Application.csproj|solutionrelative:application\\interfaces\\repositories\\iexerciserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E78FBACC-0D55-499B-8047-1465FD644098}|Application\\Application.csproj|e:\\coding\\project_files\\pureform\\application\\dtos\\exercisedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E78FBACC-0D55-499B-8047-1465FD644098}|Application\\Application.csproj|solutionrelative:application\\dtos\\exercisedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E78FBACC-0D55-499B-8047-1465FD644098}|Application\\Application.csproj|e:\\coding\\project_files\\pureform\\application\\interfaces\\repositories\\iworkoutplanrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E78FBACC-0D55-499B-8047-1465FD644098}|Application\\Application.csproj|solutionrelative:application\\interfaces\\repositories\\iworkoutplanrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E78FBACC-0D55-499B-8047-1465FD644098}|Application\\Application.csproj|e:\\coding\\project_files\\pureform\\application\\dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E78FBACC-0D55-499B-8047-1465FD644098}|Application\\Application.csproj|solutionrelative:application\\dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E78FBACC-0D55-499B-8047-1465FD644098}|Application\\Application.csproj|e:\\coding\\project_files\\pureform\\application\\interfaces\\repositories\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E78FBACC-0D55-499B-8047-1465FD644098}|Application\\Application.csproj|solutionrelative:application\\interfaces\\repositories\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,58 +26,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UserDTO.cs",
-              "DocumentMoniker": "E:\\Coding\\Project_Files\\PureForm\\Application\\DTOs\\UserDTO.cs",
-              "RelativeDocumentMoniker": "Application\\DTOs\\UserDTO.cs",
-              "ToolTip": "E:\\Coding\\Project_Files\\PureForm\\Application\\DTOs\\UserDTO.cs",
-              "RelativeToolTip": "Application\\DTOs\\UserDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "INutritionLogRepository.cs",
+              "DocumentMoniker": "E:\\Coding\\Project_Files\\PureForm\\Application\\Interfaces\\Repositories\\INutritionLogRepository.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\Repositories\\INutritionLogRepository.cs",
+              "ToolTip": "E:\\Coding\\Project_Files\\PureForm\\Application\\Interfaces\\Repositories\\INutritionLogRepository.cs",
+              "RelativeToolTip": "Application\\Interfaces\\Repositories\\INutritionLogRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T20:07:34.729Z",
+              "WhenOpened": "2025-12-04T11:37:23.895Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "NutritionLogDTO.cs",
-              "DocumentMoniker": "E:\\Coding\\Project_Files\\PureForm\\Application\\DTOs\\NutritionLogDTO.cs",
-              "RelativeDocumentMoniker": "Application\\DTOs\\NutritionLogDTO.cs",
-              "ToolTip": "E:\\Coding\\Project_Files\\PureForm\\Application\\DTOs\\NutritionLogDTO.cs",
-              "RelativeToolTip": "Application\\DTOs\\NutritionLogDTO.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAowBQAAAAAAAAAAAAAAA==",
+              "Title": "IExerciseRepository.cs",
+              "DocumentMoniker": "E:\\Coding\\Project_Files\\PureForm\\Application\\Interfaces\\Repositories\\IExerciseRepository.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\Repositories\\IExerciseRepository.cs",
+              "ToolTip": "E:\\Coding\\Project_Files\\PureForm\\Application\\Interfaces\\Repositories\\IExerciseRepository.cs",
+              "RelativeToolTip": "Application\\Interfaces\\Repositories\\IExerciseRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T18:56:42.404Z",
+              "WhenOpened": "2025-12-04T11:37:23.453Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ExerciseDTO.cs",
-              "DocumentMoniker": "E:\\Coding\\Project_Files\\PureForm\\Application\\DTOs\\ExerciseDTO.cs",
-              "RelativeDocumentMoniker": "Application\\DTOs\\ExerciseDTO.cs",
-              "ToolTip": "E:\\Coding\\Project_Files\\PureForm\\Application\\DTOs\\ExerciseDTO.cs",
-              "RelativeToolTip": "Application\\DTOs\\ExerciseDTO.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Title": "IWorkoutPlanRepository.cs",
+              "DocumentMoniker": "E:\\Coding\\Project_Files\\PureForm\\Application\\Interfaces\\Repositories\\IWorkoutPlanRepository.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\Repositories\\IWorkoutPlanRepository.cs",
+              "ToolTip": "E:\\Coding\\Project_Files\\PureForm\\Application\\Interfaces\\Repositories\\IWorkoutPlanRepository.cs",
+              "RelativeToolTip": "Application\\Interfaces\\Repositories\\IWorkoutPlanRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T18:56:31.427Z",
+              "WhenOpened": "2025-12-04T11:37:22.282Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "WorkoutPlanDTO.cs",
-              "DocumentMoniker": "E:\\Coding\\Project_Files\\PureForm\\Application\\DTOs\\WorkoutPlanDTO.cs",
-              "RelativeDocumentMoniker": "Application\\DTOs\\WorkoutPlanDTO.cs",
-              "ToolTip": "E:\\Coding\\Project_Files\\PureForm\\Application\\DTOs\\WorkoutPlanDTO.cs",
-              "RelativeToolTip": "Application\\DTOs\\WorkoutPlanDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "IUserRepository.cs",
+              "DocumentMoniker": "E:\\Coding\\Project_Files\\PureForm\\Application\\Interfaces\\Repositories\\IUserRepository.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\Repositories\\IUserRepository.cs",
+              "ToolTip": "E:\\Coding\\Project_Files\\PureForm\\Application\\Interfaces\\Repositories\\IUserRepository.cs",
+              "RelativeToolTip": "Application\\Interfaces\\Repositories\\IUserRepository.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T18:56:20.238Z",
+              "WhenOpened": "2025-12-04T11:34:25.342Z",
               "EditorCaption": ""
             }
           ]

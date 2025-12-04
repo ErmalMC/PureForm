@@ -2,7 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\Application",
-    "\\Application\\DTOs"
+    "\\Application\\DTOs",
+    "\\Application\\Interfaces"
   ],
   "SelectedNode": "\\PureForm.sln",
   "PreviewInSolutionExplorer": false
