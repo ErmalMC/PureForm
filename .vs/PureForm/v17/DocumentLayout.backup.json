@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "E:\\Coding\\Project_Files\\PureForm\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Coding\\Project_Files\\PureForm\\Application\\DTOs\\WorkoutPlanDTO.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Application\\DTOs\\WorkoutPlanDTO.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AB6EC1C0-C7EB-44FC-AEAF-74DF54F1BB24}|WebAPI\\WebAPI.csproj|e:\\coding\\project_files\\pureform\\webapi\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AB6EC1C0-C7EB-44FC-AEAF-74DF54F1BB24}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Coding\\Project_Files\\PureForm\\Application\\DTOs\\UserDTO.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Application\\DTOs\\UserDTO.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6D83865E-2CB4-4326-AF36-051DC13C543A}|Infrastructure\\Infrastructure.csproj|e:\\coding\\project_files\\pureform\\infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D83865E-2CB4-4326-AF36-051DC13C543A}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Coding\\Project_Files\\PureForm\\Application\\DTOs\\NutritionLogDTO.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Application\\DTOs\\NutritionLogDTO.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AB6EC1C0-C7EB-44FC-AEAF-74DF54F1BB24}|WebAPI\\WebAPI.csproj|e:\\coding\\project_files\\pureform\\webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AB6EC1C0-C7EB-44FC-AEAF-74DF54F1BB24}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Coding\\Project_Files\\PureForm\\Application\\DTOs\\ExerciseDTO.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Application\\DTOs\\ExerciseDTO.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E78FBACC-0D55-499B-8047-1465FD644098}|Application\\Application.csproj|e:\\coding\\project_files\\pureform\\application\\interfaces\\services\\iworkoutplanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E78FBACC-0D55-499B-8047-1465FD644098}|Application\\Application.csproj|solutionrelative:application\\interfaces\\services\\iworkoutplanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E78FBACC-0D55-499B-8047-1465FD644098}|Application\\Application.csproj|e:\\coding\\project_files\\pureform\\application\\interfaces\\services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E78FBACC-0D55-499B-8047-1465FD644098}|Application\\Application.csproj|solutionrelative:application\\interfaces\\services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,55 +30,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UserDTO.cs",
-              "DocumentMoniker": "E:\\Coding\\Project_Files\\PureForm\\Application\\DTOs\\UserDTO.cs",
-              "RelativeDocumentMoniker": "Application\\DTOs\\UserDTO.cs",
-              "ToolTip": "E:\\Coding\\Project_Files\\PureForm\\Application\\DTOs\\UserDTO.cs",
-              "RelativeToolTip": "Application\\DTOs\\UserDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "E:\\Coding\\Project_Files\\PureForm\\WebAPI\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "E:\\Coding\\Project_Files\\PureForm\\WebAPI\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "WebAPI\\Controllers\\WeatherForecastController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T20:07:34.729Z"
+              "WhenOpened": "2025-12-31T19:24:53.807Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "NutritionLogDTO.cs",
-              "DocumentMoniker": "E:\\Coding\\Project_Files\\PureForm\\Application\\DTOs\\NutritionLogDTO.cs",
-              "RelativeDocumentMoniker": "Application\\DTOs\\NutritionLogDTO.cs",
-              "ToolTip": "E:\\Coding\\Project_Files\\PureForm\\Application\\DTOs\\NutritionLogDTO.cs",
-              "RelativeToolTip": "Application\\DTOs\\NutritionLogDTO.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAowBQAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "E:\\Coding\\Project_Files\\PureForm\\Infrastructure\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\DependencyInjection.cs",
+              "ToolTip": "E:\\Coding\\Project_Files\\PureForm\\Infrastructure\\DependencyInjection.cs",
+              "RelativeToolTip": "Infrastructure\\DependencyInjection.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAmwAkAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T18:56:42.404Z"
+              "WhenOpened": "2025-12-31T19:11:43.852Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "ExerciseDTO.cs",
-              "DocumentMoniker": "E:\\Coding\\Project_Files\\PureForm\\Application\\DTOs\\ExerciseDTO.cs",
-              "RelativeDocumentMoniker": "Application\\DTOs\\ExerciseDTO.cs",
-              "ToolTip": "E:\\Coding\\Project_Files\\PureForm\\Application\\DTOs\\ExerciseDTO.cs",
-              "RelativeToolTip": "Application\\DTOs\\ExerciseDTO.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Title": "IWorkoutPlanService.cs",
+              "DocumentMoniker": "E:\\Coding\\Project_Files\\PureForm\\Application\\Interfaces\\Services\\IWorkoutPlanService.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\Services\\IWorkoutPlanService.cs",
+              "ToolTip": "E:\\Coding\\Project_Files\\PureForm\\Application\\Interfaces\\Services\\IWorkoutPlanService.cs",
+              "RelativeToolTip": "Application\\Interfaces\\Services\\IWorkoutPlanService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T18:56:31.427Z"
+              "WhenOpened": "2025-12-31T19:06:54.675Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "WorkoutPlanDTO.cs",
-              "DocumentMoniker": "E:\\Coding\\Project_Files\\PureForm\\Application\\DTOs\\WorkoutPlanDTO.cs",
-              "RelativeDocumentMoniker": "Application\\DTOs\\WorkoutPlanDTO.cs",
-              "ToolTip": "E:\\Coding\\Project_Files\\PureForm\\Application\\DTOs\\WorkoutPlanDTO.cs",
-              "RelativeToolTip": "Application\\DTOs\\WorkoutPlanDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "IUserService.cs",
+              "DocumentMoniker": "E:\\Coding\\Project_Files\\PureForm\\Application\\Interfaces\\Services\\IUserService.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\Services\\IUserService.cs",
+              "ToolTip": "E:\\Coding\\Project_Files\\PureForm\\Application\\Interfaces\\Services\\IUserService.cs",
+              "RelativeToolTip": "Application\\Interfaces\\Services\\IUserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-30T18:56:20.238Z",
+              "WhenOpened": "2025-12-31T19:06:46.966Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\Coding\\Project_Files\\PureForm\\WebAPI\\Program.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Program.cs",
+              "ToolTip": "E:\\Coding\\Project_Files\\PureForm\\WebAPI\\Program.cs",
+              "RelativeToolTip": "WebAPI\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-31T19:01:20.683Z",
               "EditorCaption": ""
             }
           ]
