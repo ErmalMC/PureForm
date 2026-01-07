@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\backend",
+    "\\backend\\PureForm.Application",
+    "\\backend\\PureForm.Domain",
+    "\\backend\\PureForm.Infrastructure",
+    "\\backend\\PureForm.WebAPI"
+  ],
+  "SelectedNode": "\\backend\\PureForm.sln",
+  "PreviewInSolutionExplorer": false
+}
