@@ -4,6 +4,8 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
+import WorkoutPlans from './pages/WorkoutPlans';
+import Profile from './pages/Profile';
 
 function App() {
     return (
@@ -17,6 +19,22 @@ function App() {
                         element={
                             <ProtectedRoute>
                                 <Dashboard />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route
+                        path="/workouts"
+                        element={
+                            <ProtectedRoute>
+                                <WorkoutPlans />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route
+                        path="/profile"
+                        element={
+                            <ProtectedRoute>
+                                <Profile />
                             </ProtectedRoute>
                         }
                     />

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Coding\\Project_Files\\PureForm\\backend\\PureForm.Application\\PureForm.Application.csproj": {}
+    "D:\\Programming Files\\PureForm\\backend\\PureForm.Application\\PureForm.Application.csproj": {}
   },
   "projects": {
-    "E:\\Coding\\Project_Files\\PureForm\\backend\\PureForm.Application\\PureForm.Application.csproj": {
+    "D:\\Programming Files\\PureForm\\backend\\PureForm.Application\\PureForm.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Coding\\Project_Files\\PureForm\\backend\\PureForm.Application\\PureForm.Application.csproj",
+        "projectUniqueName": "D:\\Programming Files\\PureForm\\backend\\PureForm.Application\\PureForm.Application.csproj",
         "projectName": "PureForm.Application",
-        "projectPath": "E:\\Coding\\Project_Files\\PureForm\\backend\\PureForm.Application\\PureForm.Application.csproj",
+        "projectPath": "D:\\Programming Files\\PureForm\\backend\\PureForm.Application\\PureForm.Application.csproj",
         "packagesPath": "C:\\Users\\ermal\\.nuget\\packages\\",
-        "outputPath": "E:\\Coding\\Project_Files\\PureForm\\backend\\PureForm.Application\\obj\\",
+        "outputPath": "D:\\Programming Files\\PureForm\\backend\\PureForm.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "E:\\Coding\\VS\\VSSDK\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\ermal\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -33,8 +33,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "E:\\Coding\\Project_Files\\PureForm\\backend\\PureForm.Domain\\PureForm.Domain.csproj": {
-                "projectPath": "E:\\Coding\\Project_Files\\PureForm\\backend\\PureForm.Domain\\PureForm.Domain.csproj"
+              "D:\\Programming Files\\PureForm\\backend\\PureForm.Domain\\PureForm.Domain.csproj": {
+                "projectPath": "D:\\Programming Files\\PureForm\\backend\\PureForm.Domain\\PureForm.Domain.csproj"
               }
             }
           }
@@ -49,7 +49,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net9.0": {
@@ -70,21 +70,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Coding\\Project_Files\\PureForm\\backend\\PureForm.Domain\\PureForm.Domain.csproj": {
+    "D:\\Programming Files\\PureForm\\backend\\PureForm.Domain\\PureForm.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Coding\\Project_Files\\PureForm\\backend\\PureForm.Domain\\PureForm.Domain.csproj",
+        "projectUniqueName": "D:\\Programming Files\\PureForm\\backend\\PureForm.Domain\\PureForm.Domain.csproj",
         "projectName": "PureForm.Domain",
-        "projectPath": "E:\\Coding\\Project_Files\\PureForm\\backend\\PureForm.Domain\\PureForm.Domain.csproj",
+        "projectPath": "D:\\Programming Files\\PureForm\\backend\\PureForm.Domain\\PureForm.Domain.csproj",
         "packagesPath": "C:\\Users\\ermal\\.nuget\\packages\\",
-        "outputPath": "E:\\Coding\\Project_Files\\PureForm\\backend\\PureForm.Domain\\obj\\",
+        "outputPath": "D:\\Programming Files\\PureForm\\backend\\PureForm.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "E:\\Coding\\VS\\VSSDK\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\ermal\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -115,7 +115,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net9.0": {
@@ -136,7 +136,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

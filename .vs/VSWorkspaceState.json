@@ -7,6 +7,6 @@
     "\\backend\\PureForm.Infrastructure",
     "\\backend\\PureForm.WebAPI"
   ],
-  "SelectedNode": "\\backend\\PureForm.sln",
+  "SelectedNode": "\\backend\\PureForm.WebAPI\\Program.cs",
   "PreviewInSolutionExplorer": false
 }

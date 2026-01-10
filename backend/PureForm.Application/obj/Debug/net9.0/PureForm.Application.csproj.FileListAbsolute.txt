@@ -14,3 +14,19 @@ E:\Coding\Project_Files\PureForm\backend\PureForm.Application\obj\Debug\net9.0\P
 E:\Coding\Project_Files\PureForm\backend\PureForm.Application\obj\Debug\net9.0\refint\PureForm.Application.dll
 E:\Coding\Project_Files\PureForm\backend\PureForm.Application\obj\Debug\net9.0\PureForm.Application.pdb
 E:\Coding\Project_Files\PureForm\backend\PureForm.Application\obj\Debug\net9.0\ref\PureForm.Application.dll
+D:\Programming Files\PureForm\backend\PureForm.Application\bin\Debug\net9.0\PureForm.Application.deps.json
+D:\Programming Files\PureForm\backend\PureForm.Application\bin\Debug\net9.0\PureForm.Application.dll
+D:\Programming Files\PureForm\backend\PureForm.Application\bin\Debug\net9.0\PureForm.Application.pdb
+D:\Programming Files\PureForm\backend\PureForm.Application\bin\Debug\net9.0\PureForm.Domain.dll
+D:\Programming Files\PureForm\backend\PureForm.Application\bin\Debug\net9.0\PureForm.Domain.pdb
+D:\Programming Files\PureForm\backend\PureForm.Application\obj\Debug\net9.0\PureForm.Application.csproj.AssemblyReference.cache
+D:\Programming Files\PureForm\backend\PureForm.Application\obj\Debug\net9.0\PureForm.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programming Files\PureForm\backend\PureForm.Application\obj\Debug\net9.0\PureForm.Application.AssemblyInfoInputs.cache
+D:\Programming Files\PureForm\backend\PureForm.Application\obj\Debug\net9.0\PureForm.Application.AssemblyInfo.cs
+D:\Programming Files\PureForm\backend\PureForm.Application\obj\Debug\net9.0\PureForm.Application.csproj.CoreCompileInputs.cache
+D:\Programming Files\PureForm\backend\PureForm.Application\obj\Debug\net9.0\PureForm.Application.sourcelink.json
+D:\Programming Files\PureForm\backend\PureForm.Application\obj\Debug\net9.0\PureForm.E0534FEC.Up2Date
+D:\Programming Files\PureForm\backend\PureForm.Application\obj\Debug\net9.0\PureForm.Application.dll
+D:\Programming Files\PureForm\backend\PureForm.Application\obj\Debug\net9.0\refint\PureForm.Application.dll
+D:\Programming Files\PureForm\backend\PureForm.Application\obj\Debug\net9.0\PureForm.Application.pdb
+D:\Programming Files\PureForm\backend\PureForm.Application\obj\Debug\net9.0\ref\PureForm.Application.dll

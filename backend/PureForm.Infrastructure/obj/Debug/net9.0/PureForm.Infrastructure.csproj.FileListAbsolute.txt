@@ -18,3 +18,23 @@ E:\Coding\Project_Files\PureForm\backend\PureForm.Infrastructure\obj\Debug\net9.
 E:\Coding\Project_Files\PureForm\backend\PureForm.Infrastructure\obj\Debug\net9.0\PureForm.Infrastructure.pdb
 E:\Coding\Project_Files\PureForm\backend\PureForm.Infrastructure\obj\Debug\net9.0\PureForm.Infrastructure.genruntimeconfig.cache
 E:\Coding\Project_Files\PureForm\backend\PureForm.Infrastructure\obj\Debug\net9.0\ref\PureForm.Infrastructure.dll
+D:\Programming Files\PureForm\backend\PureForm.Infrastructure\bin\Debug\net9.0\PureForm.Infrastructure.deps.json
+D:\Programming Files\PureForm\backend\PureForm.Infrastructure\bin\Debug\net9.0\PureForm.Infrastructure.runtimeconfig.json
+D:\Programming Files\PureForm\backend\PureForm.Infrastructure\bin\Debug\net9.0\PureForm.Infrastructure.dll
+D:\Programming Files\PureForm\backend\PureForm.Infrastructure\bin\Debug\net9.0\PureForm.Infrastructure.pdb
+D:\Programming Files\PureForm\backend\PureForm.Infrastructure\bin\Debug\net9.0\PureForm.Application.dll
+D:\Programming Files\PureForm\backend\PureForm.Infrastructure\bin\Debug\net9.0\PureForm.Domain.dll
+D:\Programming Files\PureForm\backend\PureForm.Infrastructure\bin\Debug\net9.0\PureForm.Domain.pdb
+D:\Programming Files\PureForm\backend\PureForm.Infrastructure\bin\Debug\net9.0\PureForm.Application.pdb
+D:\Programming Files\PureForm\backend\PureForm.Infrastructure\obj\Debug\net9.0\PureForm.Infrastructure.csproj.AssemblyReference.cache
+D:\Programming Files\PureForm\backend\PureForm.Infrastructure\obj\Debug\net9.0\PureForm.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programming Files\PureForm\backend\PureForm.Infrastructure\obj\Debug\net9.0\PureForm.Infrastructure.AssemblyInfoInputs.cache
+D:\Programming Files\PureForm\backend\PureForm.Infrastructure\obj\Debug\net9.0\PureForm.Infrastructure.AssemblyInfo.cs
+D:\Programming Files\PureForm\backend\PureForm.Infrastructure\obj\Debug\net9.0\PureForm.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Programming Files\PureForm\backend\PureForm.Infrastructure\obj\Debug\net9.0\PureForm.Infrastructure.sourcelink.json
+D:\Programming Files\PureForm\backend\PureForm.Infrastructure\obj\Debug\net9.0\PureForm.1D75E79D.Up2Date
+D:\Programming Files\PureForm\backend\PureForm.Infrastructure\obj\Debug\net9.0\PureForm.Infrastructure.dll
+D:\Programming Files\PureForm\backend\PureForm.Infrastructure\obj\Debug\net9.0\refint\PureForm.Infrastructure.dll
+D:\Programming Files\PureForm\backend\PureForm.Infrastructure\obj\Debug\net9.0\PureForm.Infrastructure.pdb
+D:\Programming Files\PureForm\backend\PureForm.Infrastructure\obj\Debug\net9.0\PureForm.Infrastructure.genruntimeconfig.cache
+D:\Programming Files\PureForm\backend\PureForm.Infrastructure\obj\Debug\net9.0\ref\PureForm.Infrastructure.dll
