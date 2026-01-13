@@ -5,14 +5,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{1F84EA61-911F-4D18-8493-F977542DF6DD}|PureForm.WebAPI\\PureForm.WebAPI.csproj|d:\\programming files\\pureform\\backend\\pureform.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1F84EA61-911F-4D18-8493-F977542DF6DD}|PureForm.WebAPI\\PureForm.WebAPI.csproj|solutionrelative:pureform.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BBAD4D35-2A9A-4063-B552-09BC709C2917}|PureForm.Infrastructure\\PureForm.Infrastructure.csproj|d:\\programming files\\pureform\\backend\\pureform.infrastructure\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBAD4D35-2A9A-4063-B552-09BC709C2917}|PureForm.Infrastructure\\PureForm.Infrastructure.csproj|solutionrelative:pureform.infrastructure\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F84EA61-911F-4D18-8493-F977542DF6DD}|PureForm.WebAPI\\PureForm.WebAPI.csproj|d:\\programming files\\pureform\\backend\\pureform.webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{1F84EA61-911F-4D18-8493-F977542DF6DD}|PureForm.WebAPI\\PureForm.WebAPI.csproj|solutionrelative:pureform.webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,40 +26,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "D:\\Programming Files\\PureForm\\backend\\PureForm.Infrastructure\\Data\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "PureForm.Infrastructure\\Data\\ApplicationDbContext.cs",
-              "ToolTip": "D:\\Programming Files\\PureForm\\backend\\PureForm.Infrastructure\\Data\\ApplicationDbContext.cs",
-              "RelativeToolTip": "PureForm.Infrastructure\\Data\\ApplicationDbContext.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAwwFsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-10T01:13:27.986Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Programming Files\\PureForm\\backend\\PureForm.WebAPI\\Program.cs",
               "RelativeDocumentMoniker": "PureForm.WebAPI\\Program.cs",
               "ToolTip": "D:\\Programming Files\\PureForm\\backend\\PureForm.WebAPI\\Program.cs",
               "RelativeToolTip": "PureForm.WebAPI\\Program.cs",
-              "ViewState": "AgIAAFMAAAAAAAAAAAAAAFMAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAB0AAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-10T01:05:36.885Z",
+              "WhenOpened": "2026-01-13T16:13:23.778Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\Programming Files\\PureForm\\backend\\PureForm.WebAPI\\appsettings.json",
-              "RelativeDocumentMoniker": "PureForm.WebAPI\\appsettings.json",
-              "ToolTip": "D:\\Programming Files\\PureForm\\backend\\PureForm.WebAPI\\appsettings.json",
-              "RelativeToolTip": "PureForm.WebAPI\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-01-10T00:49:00.698Z"
             }
           ]
         }
