@@ -6,6 +6,7 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import WorkoutPlans from './pages/WorkoutPlans';
 import Profile from './pages/Profile';
+import Nutrition from "./pages/Nutrition.jsx";
 
 function App() {
     return (
@@ -19,6 +20,14 @@ function App() {
                         element={
                             <ProtectedRoute>
                                 <Dashboard />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route
+                        path="/nutrition"
+                        element={
+                            <ProtectedRoute>
+                                <Nutrition />
                             </ProtectedRoute>
                         }
                     />

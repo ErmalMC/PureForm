@@ -19,6 +19,7 @@ namespace PureForm.Infrastructure.Data
         public DbSet<Exercise> Exercises { get; set; }
         public DbSet<NutritionLog> NutritionLogs { get; set; }
         public DbSet<StripeSubscription> StripeSubscriptions { get; set; }
+        public DbSet<FoodItem> FoodItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -34,6 +35,11 @@ namespace PureForm.Infrastructure.Data
                 entity.Property(e => e.LastName).IsRequired().HasMaxLength(100);
                 entity.Property(e => e.Weight).HasPrecision(5, 2);
                 entity.Property(e => e.Height).HasPrecision(5, 2);
+                // NEW: Goals
+                entity.Property(e => e.DailyCalorieGoal).HasPrecision(7, 2);
+                entity.Property(e => e.DailyProteinGoal).HasPrecision(6, 2);
+                entity.Property(e => e.DailyCarbsGoal).HasPrecision(6, 2);
+                entity.Property(e => e.DailyFatsGoal).HasPrecision(6, 2);
             });
 
             // WorkoutPlan configuration
@@ -84,6 +90,15 @@ namespace PureForm.Infrastructure.Data
                     .WithMany()
                     .HasForeignKey(e => e.UserId)
                     .OnDelete(DeleteBehavior.Cascade);
+            });
+
+            modelBuilder.Entity<FoodItem>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Name).IsRequired().HasMaxLength(200);
+                entity.HasIndex(e => e.Name);
+                entity.HasIndex(e => e.Category);
+                entity.HasIndex(e => e.IsPopular);
             });
         }
     }

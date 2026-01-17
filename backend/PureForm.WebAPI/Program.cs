@@ -28,6 +28,9 @@ builder.Services.AddScoped<IWorkoutPlanService, WorkoutPlanService>();
 builder.Services.AddScoped<IStripeService, StripeService>();
 builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<INutritionLogService, NutritionLogService>();
+builder.Services.AddScoped<INutritionCalculatorService, NutritionCalculatorService>();
+builder.Services.AddScoped<IFoodItemService, FoodItemService>();
 
 // JWT Authentication
 var jwtKey = builder.Configuration["Jwt:Key"] ?? throw new InvalidOperationException("JWT Key not configured");
