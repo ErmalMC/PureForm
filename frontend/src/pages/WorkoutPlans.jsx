@@ -1,6 +1,3 @@
-// ============================================================
-// src/pages/WorkoutPlans.jsx
-// ============================================================
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { workoutApi } from '../api/workoutApi';
@@ -11,6 +8,8 @@ const WorkoutPlans = () => {
     const [workoutPlans, setWorkoutPlans] = useState([]);
     const [loading, setLoading] = useState(true);
     const [showCreateModal, setShowCreateModal] = useState(false);
+    const [showGenerateModal, setShowGenerateModal] = useState(false); // NEW
+    const [selectedDifficulty, setSelectedDifficulty] = useState('Intermediate'); // NEW
     const [selectedPlan, setSelectedPlan] = useState(null);
     const [formData, setFormData] = useState({
         name: '',
@@ -58,7 +57,8 @@ const WorkoutPlans = () => {
     const handleGeneratePlan = async () => {
         try {
             setLoading(true);
-            await workoutApi.generatePersonalized(user.id);
+            setShowGenerateModal(false);
+            await workoutApi.generatePersonalized(user.id, selectedDifficulty);
             await fetchWorkoutPlans();
         } catch (error) {
             console.error('Error generating plan:', error);
@@ -93,7 +93,7 @@ const WorkoutPlans = () => {
                     </div>
                     <div className="flex gap-4">
                         <button
-                            onClick={handleGeneratePlan}
+                            onClick={() => setShowGenerateModal(true)}
                             disabled={loading}
                             className="bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-green-600 hover:to-green-700 disabled:opacity-50 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all flex items-center gap-2"
                         >
@@ -130,7 +130,7 @@ const WorkoutPlans = () => {
                         <p className="text-gray-500 mb-8 max-w-md mx-auto">Start your fitness journey by creating a personalized workout plan or let our AI generate one for you!</p>
                         <div className="flex gap-4 justify-center">
                             <button
-                                onClick={handleGeneratePlan}
+                                onClick={() => setShowGenerateModal(true)}
                                 className="bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-green-600 hover:to-green-700 shadow-lg"
                             >
                                 Generate AI Plan
@@ -163,13 +163,13 @@ const WorkoutPlans = () => {
                                     <p className="text-gray-600 mb-4 line-clamp-2 min-h-[3rem]">{plan.description}</p>
 
                                     <div className="flex items-center gap-2 mb-4">
-                    <span className={`px-3 py-1 rounded-full text-sm font-bold ${
-                        plan.difficultyLevel === 'Beginner' ? 'bg-green-100 text-green-700' :
-                            plan.difficultyLevel === 'Intermediate' ? 'bg-yellow-100 text-yellow-700' :
-                                'bg-red-100 text-red-700'
-                    }`}>
-                      {plan.difficultyLevel}
-                    </span>
+                                        <span className={`px-3 py-1 rounded-full text-sm font-bold ${
+                                            plan.difficultyLevel === 'Beginner' ? 'bg-green-100 text-green-700' :
+                                                plan.difficultyLevel === 'Intermediate' ? 'bg-yellow-100 text-yellow-700' :
+                                                    'bg-red-100 text-red-700'
+                                        }`}>
+                                            {plan.difficultyLevel}
+                                        </span>
                                         <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-bold">{plan.durationWeeks} weeks</span>
                                     </div>
 
@@ -191,6 +191,71 @@ const WorkoutPlans = () => {
                                 </div>
                             </div>
                         ))}
+                    </div>
+                )}
+
+                {/* Generate AI Plan Modal - NEW */}
+                {showGenerateModal && (
+                    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                        <div className="bg-white rounded-2xl p-8 max-w-md w-full mx-4">
+                            <h3 className="text-2xl font-bold mb-2">Generate AI Workout Plan</h3>
+                            <p className="text-gray-600 mb-6">Choose your difficulty level and we'll create a personalized workout plan based on your fitness goal: <span className="font-semibold text-blue-600">{user.fitnessGoal}</span></p>
+
+                            <div className="mb-6">
+                                <label className="block text-gray-700 font-semibold mb-3">Select Difficulty Level</label>
+                                <div className="space-y-3">
+                                    {['Beginner', 'Intermediate', 'Advanced'].map((level) => (
+                                        <div
+                                            key={level}
+                                            onClick={() => setSelectedDifficulty(level)}
+                                            className={`p-4 border-2 rounded-xl cursor-pointer transition-all ${
+                                                selectedDifficulty === level
+                                                    ? 'border-blue-500 bg-blue-50'
+                                                    : 'border-gray-200 hover:border-blue-300'
+                                            }`}
+                                        >
+                                            <div className="flex items-center">
+                                                <div className={`w-5 h-5 rounded-full border-2 mr-3 flex items-center justify-center ${
+                                                    selectedDifficulty === level
+                                                        ? 'border-blue-500 bg-blue-500'
+                                                        : 'border-gray-300'
+                                                }`}>
+                                                    {selectedDifficulty === level && (
+                                                        <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                                        </svg>
+                                                    )}
+                                                </div>
+                                                <div>
+                                                    <p className="font-semibold text-gray-900">{level}</p>
+                                                    <p className="text-sm text-gray-600">
+                                                        {level === 'Beginner' && 'Perfect for getting started'}
+                                                        {level === 'Intermediate' && 'For those with some experience'}
+                                                        {level === 'Advanced' && 'High intensity workouts'}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="flex gap-4">
+                                <button
+                                    type="button"
+                                    onClick={() => setShowGenerateModal(false)}
+                                    className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-300 transition-all"
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    onClick={handleGeneratePlan}
+                                    className="flex-1 bg-gradient-to-r from-green-500 to-green-600 text-white py-3 rounded-xl font-semibold hover:from-green-600 hover:to-green-700 transition-all shadow-lg"
+                                >
+                                    Generate Plan
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 )}
 
@@ -283,16 +348,16 @@ const WorkoutPlans = () => {
                             <p className="text-gray-600 mb-4">{selectedPlan.description}</p>
 
                             <div className="flex gap-4 mb-6">
-                <span className={`px-3 py-1 rounded-full text-sm font-semibold ${
-                    selectedPlan.difficultyLevel === 'Beginner' ? 'bg-green-100 text-green-800' :
-                        selectedPlan.difficultyLevel === 'Intermediate' ? 'bg-yellow-100 text-yellow-800' :
-                            'bg-red-100 text-red-800'
-                }`}>
-                  {selectedPlan.difficultyLevel}
-                </span>
+                                <span className={`px-3 py-1 rounded-full text-sm font-semibold ${
+                                    selectedPlan.difficultyLevel === 'Beginner' ? 'bg-green-100 text-green-800' :
+                                        selectedPlan.difficultyLevel === 'Intermediate' ? 'bg-yellow-100 text-yellow-800' :
+                                            'bg-red-100 text-red-800'
+                                }`}>
+                                    {selectedPlan.difficultyLevel}
+                                </span>
                                 <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold">
-                  {selectedPlan.durationWeeks} weeks
-                </span>
+                                    {selectedPlan.durationWeeks} weeks
+                                </span>
                             </div>
 
                             <h4 className="text-xl font-bold mb-4">Exercises ({selectedPlan.exercises.length})</h4>
@@ -306,15 +371,15 @@ const WorkoutPlans = () => {
                                                     <h5 className="font-semibold text-lg">{index + 1}. {exercise.name}</h5>
                                                     <p className="text-gray-600 text-sm mt-1">{exercise.description}</p>
                                                     <div className="mt-2 flex flex-wrap gap-2 text-sm">
-                            <span className="bg-purple-100 text-purple-800 px-2 py-1 rounded">
-                              {exercise.muscleGroup}
-                            </span>
+                                                        <span className="bg-purple-100 text-purple-800 px-2 py-1 rounded">
+                                                            {exercise.muscleGroup}
+                                                        </span>
                                                         <span className="bg-gray-100 text-gray-800 px-2 py-1 rounded">
-                              {exercise.equipment}
-                            </span>
+                                                            {exercise.equipment}
+                                                        </span>
                                                         <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded">
-                              {exercise.sets} sets × {exercise.reps} reps
-                            </span>
+                                                            {exercise.sets} sets × {exercise.reps} reps
+                                                        </span>
                                                     </div>
                                                 </div>
                                             </div>

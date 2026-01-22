@@ -1,4 +1,4 @@
-using System.Text;
+﻿using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -77,6 +77,23 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+// Auto-seed food database on startup
+using (var scope = app.Services.CreateScope())
+{
+    try
+    {
+        var foodService = scope.ServiceProvider.GetRequiredService<IFoodItemService>();
+        await foodService.SeedPopularFoodsAsync();
+        Console.WriteLine("✓ Food database seeded successfully");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Food seeding: {ex.Message}");
+    }
+}
+
+app.Run();
 
 app.UseCors("AllowReactApp");
 //app.UseHttpsRedirection();

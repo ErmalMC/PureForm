@@ -54,9 +54,11 @@ namespace PureForm.WebAPI.Controllers
         }
 
         [HttpPost("user/{userId}/generate")]
-        public async Task<ActionResult<WorkoutPlanDto>> GeneratePersonalized(int userId)
+        public async Task<ActionResult<WorkoutPlanDto>> GeneratePersonalized(
+            int userId,
+            [FromQuery] string? difficultyLevel = null)  // ADD THIS PARAMETER
         {
-            var plan = await _workoutPlanService.GeneratePersonalizedPlanAsync(userId);
+            var plan = await _workoutPlanService.GeneratePersonalizedPlanAsync(userId, difficultyLevel);
             if (plan == null) return NotFound("User not found");
             return Ok(plan);
         }

@@ -3,32 +3,12 @@
   "WorkspaceRootPath": "D:\\Programming Files\\PureForm\\backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2C4B6278-DB5E-4385-99FA-43399E0016F0}|PureForm.Application\\PureForm.Application.csproj|d:\\programming files\\pureform\\backend\\pureform.application\\interfaces\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2C4B6278-DB5E-4385-99FA-43399E0016F0}|PureForm.Application\\PureForm.Application.csproj|solutionrelative:pureform.application\\interfaces\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BBAD4D35-2A9A-4063-B552-09BC709C2917}|PureForm.Infrastructure\\PureForm.Infrastructure.csproj|d:\\programming files\\pureform\\backend\\pureform.infrastructure\\services\\workoutplanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBAD4D35-2A9A-4063-B552-09BC709C2917}|PureForm.Infrastructure\\PureForm.Infrastructure.csproj|solutionrelative:pureform.infrastructure\\services\\workoutplanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F84EA61-911F-4D18-8493-F977542DF6DD}|PureForm.WebAPI\\PureForm.WebAPI.csproj|d:\\programming files\\pureform\\backend\\pureform.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F84EA61-911F-4D18-8493-F977542DF6DD}|PureForm.WebAPI\\PureForm.WebAPI.csproj|solutionrelative:pureform.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2C4B6278-DB5E-4385-99FA-43399E0016F0}|PureForm.Application\\PureForm.Application.csproj|d:\\programming files\\pureform\\backend\\pureform.application\\dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2C4B6278-DB5E-4385-99FA-43399E0016F0}|PureForm.Application\\PureForm.Application.csproj|solutionrelative:pureform.application\\dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F84EA61-911F-4D18-8493-F977542DF6DD}|PureForm.WebAPI\\PureForm.WebAPI.csproj|d:\\programming files\\pureform\\backend\\pureform.webapi\\controllers\\nutritioncalculatorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F84EA61-911F-4D18-8493-F977542DF6DD}|PureForm.WebAPI\\PureForm.WebAPI.csproj|solutionrelative:pureform.webapi\\controllers\\nutritioncalculatorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F84EA61-911F-4D18-8493-F977542DF6DD}|PureForm.WebAPI\\PureForm.WebAPI.csproj|d:\\programming files\\pureform\\backend\\pureform.webapi\\controllers\\fooditemscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F84EA61-911F-4D18-8493-F977542DF6DD}|PureForm.WebAPI\\PureForm.WebAPI.csproj|solutionrelative:pureform.webapi\\controllers\\fooditemscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BBAD4D35-2A9A-4063-B552-09BC709C2917}|PureForm.Infrastructure\\PureForm.Infrastructure.csproj|d:\\programming files\\pureform\\backend\\pureform.infrastructure\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBAD4D35-2A9A-4063-B552-09BC709C2917}|PureForm.Infrastructure\\PureForm.Infrastructure.csproj|solutionrelative:pureform.infrastructure\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BBAD4D35-2A9A-4063-B552-09BC709C2917}|PureForm.Infrastructure\\PureForm.Infrastructure.csproj|d:\\programming files\\pureform\\backend\\pureform.infrastructure\\services\\fooditemservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBAD4D35-2A9A-4063-B552-09BC709C2917}|PureForm.Infrastructure\\PureForm.Infrastructure.csproj|solutionrelative:pureform.infrastructure\\services\\fooditemservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2C4B6278-DB5E-4385-99FA-43399E0016F0}|PureForm.Application\\PureForm.Application.csproj|d:\\programming files\\pureform\\backend\\pureform.application\\interfaces\\iworkoutplanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2C4B6278-DB5E-4385-99FA-43399E0016F0}|PureForm.Application\\PureForm.Application.csproj|solutionrelative:pureform.application\\interfaces\\iworkoutplanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,93 +30,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UserDto.cs",
-              "DocumentMoniker": "D:\\Programming Files\\PureForm\\backend\\PureForm.Application\\DTOs\\UserDto.cs",
-              "RelativeDocumentMoniker": "PureForm.Application\\DTOs\\UserDto.cs",
-              "ToolTip": "D:\\Programming Files\\PureForm\\backend\\PureForm.Application\\DTOs\\UserDto.cs",
-              "RelativeToolTip": "PureForm.Application\\DTOs\\UserDto.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAA8wBYAAAANAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "IWorkoutPlanService.cs",
+              "DocumentMoniker": "D:\\Programming Files\\PureForm\\backend\\PureForm.Application\\Interfaces\\IWorkoutPlanService.cs",
+              "RelativeDocumentMoniker": "PureForm.Application\\Interfaces\\IWorkoutPlanService.cs",
+              "ToolTip": "D:\\Programming Files\\PureForm\\backend\\PureForm.Application\\Interfaces\\IWorkoutPlanService.cs",
+              "RelativeToolTip": "PureForm.Application\\Interfaces\\IWorkoutPlanService.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAQwAkAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T13:10:47.91Z",
+              "WhenOpened": "2026-01-22T09:46:51.013Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "IUserService.cs",
-              "DocumentMoniker": "D:\\Programming Files\\PureForm\\backend\\PureForm.Application\\Interfaces\\IUserService.cs",
-              "RelativeDocumentMoniker": "PureForm.Application\\Interfaces\\IUserService.cs",
-              "ToolTip": "D:\\Programming Files\\PureForm\\backend\\PureForm.Application\\Interfaces\\IUserService.cs",
-              "RelativeToolTip": "PureForm.Application\\Interfaces\\IUserService.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAAwAkAAAA1AAAAAAAAAA==",
+              "Title": "WorkoutPlanService.cs",
+              "DocumentMoniker": "D:\\Programming Files\\PureForm\\backend\\PureForm.Infrastructure\\Services\\WorkoutPlanService.cs",
+              "RelativeDocumentMoniker": "PureForm.Infrastructure\\Services\\WorkoutPlanService.cs",
+              "ToolTip": "D:\\Programming Files\\PureForm\\backend\\PureForm.Infrastructure\\Services\\WorkoutPlanService.cs",
+              "RelativeToolTip": "PureForm.Infrastructure\\Services\\WorkoutPlanService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T13:10:16.926Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Programming Files\\PureForm\\backend\\PureForm.WebAPI\\Program.cs",
-              "RelativeDocumentMoniker": "PureForm.WebAPI\\Program.cs",
-              "ToolTip": "D:\\Programming Files\\PureForm\\backend\\PureForm.WebAPI\\Program.cs",
-              "RelativeToolTip": "PureForm.WebAPI\\Program.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAQwB4AAABIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T13:09:14.017Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "NutritionCalculatorController.cs",
-              "DocumentMoniker": "D:\\Programming Files\\PureForm\\backend\\PureForm.WebAPI\\Controllers\\NutritionCalculatorController.cs",
-              "RelativeDocumentMoniker": "PureForm.WebAPI\\Controllers\\NutritionCalculatorController.cs",
-              "ToolTip": "D:\\Programming Files\\PureForm\\backend\\PureForm.WebAPI\\Controllers\\NutritionCalculatorController.cs",
-              "RelativeToolTip": "PureForm.WebAPI\\Controllers\\NutritionCalculatorController.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAzwDkAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T13:08:35.184Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "FoodItemsController.cs",
-              "DocumentMoniker": "D:\\Programming Files\\PureForm\\backend\\PureForm.WebAPI\\Controllers\\FoodItemsController.cs",
-              "RelativeDocumentMoniker": "PureForm.WebAPI\\Controllers\\FoodItemsController.cs",
-              "ToolTip": "D:\\Programming Files\\PureForm\\backend\\PureForm.WebAPI\\Controllers\\FoodItemsController.cs",
-              "RelativeToolTip": "PureForm.WebAPI\\Controllers\\FoodItemsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T13:08:27.388Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "D:\\Programming Files\\PureForm\\backend\\PureForm.Infrastructure\\Data\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "PureForm.Infrastructure\\Data\\ApplicationDbContext.cs",
-              "ToolTip": "D:\\Programming Files\\PureForm\\backend\\PureForm.Infrastructure\\Data\\ApplicationDbContext.cs",
-              "RelativeToolTip": "PureForm.Infrastructure\\Data\\ApplicationDbContext.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAzwCoAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T13:07:25.194Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "FoodItemService.cs",
-              "DocumentMoniker": "D:\\Programming Files\\PureForm\\backend\\PureForm.Infrastructure\\Services\\FoodItemService.cs",
-              "RelativeDocumentMoniker": "PureForm.Infrastructure\\Services\\FoodItemService.cs",
-              "ToolTip": "D:\\Programming Files\\PureForm\\backend\\PureForm.Infrastructure\\Services\\FoodItemService.cs",
-              "RelativeToolTip": "PureForm.Infrastructure\\Services\\FoodItemService.cs",
-              "ViewState": "AgIAAGMAAAAAAAAAAAAQwHkAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T13:06:51.834Z",
+              "WhenOpened": "2026-01-22T09:44:58.415Z",
               "EditorCaption": ""
             }
           ]

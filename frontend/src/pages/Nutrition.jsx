@@ -75,7 +75,7 @@ const Nutrition = () => {
             carbs: (food.carbsPer100g * multiplier).toFixed(1),
             fats: (food.fatsPer100g * multiplier).toFixed(1),
             servingSize: servingSize.toString(),
-            servingUnit: food.defaultUnit
+            servingUnit: food.defaultUnit || 'g'
         });
         setShowFoodSearch(false);
     };
@@ -195,8 +195,15 @@ const Nutrition = () => {
         return icons[mealType] || '🍽️';
     };
 
-    const calorieGoal = 2000; // You can make this dynamic based on user goals
+    const calorieGoal = userGoals.dailyCalorieGoal || 2000;
+    const proteinGoal = userGoals.dailyProteinGoal || 150;
+    const carbsGoal = userGoals.dailyCarbsGoal || 200;
+    const fatsGoal = userGoals.dailyFatsGoal || 65;
+
     const caloriePercentage = Math.min((dailyTotals.Calories / calorieGoal) * 100, 100);
+    const proteinPercentage = Math.min((dailyTotals.Protein / proteinGoal) * 100, 100);
+    const carbsPercentage = Math.min((dailyTotals.Carbs / carbsGoal) * 100, 100);
+    const fatsPercentage = Math.min((dailyTotals.Fats / fatsGoal) * 100, 100);
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50">
@@ -209,15 +216,26 @@ const Nutrition = () => {
                         <h2 className="text-4xl font-bold text-gray-900 mb-2">Nutrition Tracker</h2>
                         <p className="text-gray-600">Track your daily food intake and macros</p>
                     </div>
-                    <button
-                        onClick={() => setShowAddModal(true)}
-                        className="bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-green-600 hover:to-green-700 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all flex items-center gap-2"
-                    >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                        </svg>
-                        Add Food
-                    </button>
+                    <div className="flex gap-3">
+                        <button
+                            onClick={() => setShowGoalsModal(true)}
+                            className="bg-blue-500 text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-600 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all flex items-center gap-2"
+                        >
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                            </svg>
+                            Set Goals
+                        </button>
+                        <button
+                            onClick={() => setShowAddModal(true)}
+                            className="bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-green-600 hover:to-green-700 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all flex items-center gap-2"
+                        >
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                            </svg>
+                            Add Food
+                        </button>
+                    </div>
                 </div>
 
                 {/* Date Selector */}
@@ -275,25 +293,51 @@ const Nutrition = () => {
                         </div>
                     </div>
 
-                    <div className="bg-gradient-to-br from-red-500 to-red-600 rounded-2xl shadow-lg p-6 text-white transform hover:scale-105 transition-all">
-                        <p className="text-red-100 font-semibold mb-2">Protein</p>
-                        <p className="text-3xl font-bold">{Math.round(dailyTotals.Protein)}g</p>
-                        <p className="text-red-100 text-sm mt-2">🥩 Essential for muscle</p>
+                    <div className="bg-white rounded-2xl shadow-lg p-6 relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-red-100 to-red-200 rounded-full -mr-16 -mt-16"></div>
+                        <div className="relative">
+                            <p className="text-gray-600 font-semibold mb-2">Protein</p>
+                            <p className="text-3xl font-bold text-red-600">{Math.round(dailyTotals.Protein)}g</p>
+                            <div className="mt-4 bg-gray-200 rounded-full h-2 overflow-hidden">
+                                <div
+                                    className="bg-gradient-to-r from-red-500 to-red-600 h-full transition-all"
+                                    style={{ width: `${proteinPercentage}%` }}
+                                ></div>
+                            </div>
+                            <p className="text-sm text-gray-500 mt-2">{Math.round(proteinPercentage)}% of {proteinGoal}g goal</p>
+                        </div>
                     </div>
 
-                    <div className="bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-2xl shadow-lg p-6 text-white transform hover:scale-105 transition-all">
-                        <p className="text-yellow-100 font-semibold mb-2">Carbs</p>
-                        <p className="text-3xl font-bold">{Math.round(dailyTotals.Carbs)}g</p>
-                        <p className="text-yellow-100 text-sm mt-2">⚡ Energy source</p>
+                    <div className="bg-white rounded-2xl shadow-lg p-6 relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-full -mr-16 -mt-16"></div>
+                        <div className="relative">
+                            <p className="text-gray-600 font-semibold mb-2">Carbs</p>
+                            <p className="text-3xl font-bold text-yellow-600">{Math.round(dailyTotals.Carbs)}g</p>
+                            <div className="mt-4 bg-gray-200 rounded-full h-2 overflow-hidden">
+                                <div
+                                    className="bg-gradient-to-r from-yellow-500 to-yellow-600 h-full transition-all"
+                                    style={{ width: `${carbsPercentage}%` }}
+                                ></div>
+                            </div>
+                            <p className="text-sm text-gray-500 mt-2">{Math.round(carbsPercentage)}% of {carbsGoal}g goal</p>
+                        </div>
                     </div>
 
-                    <div className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl shadow-lg p-6 text-white transform hover:scale-105 transition-all">
-                        <p className="text-purple-100 font-semibold mb-2">Fats</p>
-                        <p className="text-3xl font-bold">{Math.round(dailyTotals.Fats)}g</p>
-                        <p className="text-purple-100 text-sm mt-2">🥑 Healthy fats</p>
+                    <div className="bg-white rounded-2xl shadow-lg p-6 relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-100 to-purple-200 rounded-full -mr-16 -mt-16"></div>
+                        <div className="relative">
+                            <p className="text-gray-600 font-semibold mb-2">Fats</p>
+                            <p className="text-3xl font-bold text-purple-600">{Math.round(dailyTotals.Fats)}g</p>
+                            <div className="mt-4 bg-gray-200 rounded-full h-2 overflow-hidden">
+                                <div
+                                    className="bg-gradient-to-r from-purple-500 to-purple-600 h-full transition-all"
+                                    style={{ width: `${fatsPercentage}%` }}
+                                ></div>
+                            </div>
+                            <p className="text-sm text-gray-500 mt-2">{Math.round(fatsPercentage)}% of {fatsGoal}g goal</p>
+                        </div>
                     </div>
                 </div>
-
                 {/* Food Log */}
                 <div className="bg-white rounded-2xl shadow-lg p-8">
                     <h3 className="text-2xl font-bold text-gray-900 mb-6">Today's Meals</h3>
@@ -331,8 +375,8 @@ const Nutrition = () => {
                                             <span className="text-2xl">{getMealIcon(mealType)}</span>
                                             {mealType}
                                             <span className="text-sm font-normal text-gray-500 ml-2">
-                        ({mealLogs.reduce((sum, log) => sum + log.calories, 0).toFixed(0)} cal)
-                      </span>
+                                                ({mealLogs.reduce((sum, log) => sum + log.calories, 0).toFixed(0)} cal)
+                                            </span>
                                         </h4>
                                         <div className="space-y-3">
                                             {mealLogs.map((log) => (
@@ -400,14 +444,23 @@ const Nutrition = () => {
 
                                 <div>
                                     <label className="block text-sm font-semibold text-gray-700 mb-2">Food Name</label>
-                                    <input
-                                        type="text"
-                                        value={formData.foodName}
-                                        onChange={(e) => setFormData({...formData, foodName: e.target.value})}
-                                        className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
-                                        placeholder="e.g., Grilled Chicken Breast"
-                                        required
-                                    />
+                                    <div className="flex gap-2">
+                                        <input
+                                            type="text"
+                                            value={formData.foodName}
+                                            onChange={(e) => setFormData({...formData, foodName: e.target.value})}
+                                            className="flex-1 px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
+                                            placeholder="e.g., Grilled Chicken Breast"
+                                            required
+                                        />
+                                        <button
+                                            type="button"
+                                            onClick={() => setShowFoodSearch(true)}
+                                            className="px-4 py-3 bg-blue-500 text-white rounded-xl hover:bg-blue-600 transition-all whitespace-nowrap"
+                                        >
+                                            🔍 Search
+                                        </button>
+                                    </div>
                                 </div>
 
                                 <div className="grid grid-cols-2 gap-4">
@@ -504,6 +557,183 @@ const Nutrition = () => {
                                     </button>
                                 </div>
                             </form>
+                        </div>
+                    </div>
+                )}
+
+                {/* Food Search Modal */}
+                {showFoodSearch && (
+                    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+                        <div className="bg-white rounded-2xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                            <div className="flex justify-between items-center mb-6">
+                                <h3 className="text-2xl font-bold">Search Foods</h3>
+                                <button
+                                    onClick={() => setShowFoodSearch(false)}
+                                    className="text-gray-500 hover:text-gray-700"
+                                >
+                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <div className="mb-6">
+                                <input
+                                    type="text"
+                                    placeholder="Search for foods..."
+                                    value={searchQuery}
+                                    onChange={(e) => handleFoodSearch(e.target.value)}
+                                    className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
+                                    autoFocus
+                                />
+                            </div>
+
+                            {searchQuery.length >= 2 && (
+                                <div className="mb-6">
+                                    <h4 className="text-lg font-semibold mb-4">Search Results</h4>
+                                    {searchResults.length === 0 ? (
+                                        <p className="text-gray-500 text-center py-4">No results found</p>
+                                    ) : (
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            {searchResults.map((food) => (
+                                                <div
+                                                    key={food.id}
+                                                    onClick={() => selectFood(food)}
+                                                    className="border-2 border-gray-200 rounded-xl p-4 hover:border-green-500 cursor-pointer transition-all"
+                                                >
+                                                    <h5 className="font-semibold text-gray-900 mb-2">{food.name}</h5>
+                                                    <p className="text-sm text-gray-600 mb-2">{food.category}</p>
+                                                    <div className="flex gap-2 text-xs">
+                                                        <span className="bg-orange-100 text-orange-700 px-2 py-1 rounded">{food.caloriesPer100g} cal</span>
+                                                        <span className="bg-red-100 text-red-700 px-2 py-1 rounded">P: {food.proteinPer100g}g</span>
+                                                        <span className="bg-yellow-100 text-yellow-700 px-2 py-1 rounded">C: {food.carbsPer100g}g</span>
+                                                        <span className="bg-purple-100 text-purple-700 px-2 py-1 rounded">F: {food.fatsPer100g}g</span>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+
+                            <div>
+                                <h4 className="text-lg font-semibold mb-4">Popular Foods</h4>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    {popularFoods.map((food) => (
+                                        <div
+                                            key={food.id}
+                                            onClick={() => selectFood(food)}
+                                            className="border-2 border-gray-200 rounded-xl p-4 hover:border-green-500 cursor-pointer transition-all"
+                                        >
+                                            <h5 className="font-semibold text-gray-900 mb-2">{food.name}</h5>
+                                            <p className="text-sm text-gray-600 mb-2">{food.category}</p>
+                                            <div className="flex gap-2 text-xs">
+                                                <span className="bg-orange-100 text-orange-700 px-2 py-1 rounded">{food.caloriesPer100g} cal</span>
+                                                <span className="bg-red-100 text-red-700 px-2 py-1 rounded">P: {food.proteinPer100g}g</span>
+                                                <span className="bg-yellow-100 text-yellow-700 px-2 py-1 rounded">C: {food.carbsPer100g}g</span>
+                                                <span className="bg-purple-100 text-purple-700 px-2 py-1 rounded">F: {food.fatsPer100g}g</span>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+                {/* Goals Modal */}
+                {showGoalsModal && (
+                    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+                        <div className="bg-white rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                            <h3 className="text-2xl font-bold mb-6">Set Your Daily Goals</h3>
+
+                            <div className="mb-6 p-4 bg-blue-50 rounded-xl">
+                                <h4 className="font-semibold text-blue-900 mb-3">Get Recommendations</h4>
+                                <p className="text-sm text-blue-700 mb-4">
+                                    We can calculate personalized nutrition goals based on your profile, fitness goals, and activity level.
+                                </p>
+                                <button
+                                    onClick={loadRecommendations}
+                                    className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-all"
+                                >
+                                    Calculate Recommendations
+                                </button>
+
+                                {recommendations && (
+                                    <div className="mt-4 p-4 bg-white rounded-lg">
+                                        <p className="font-semibold mb-2">Recommended Goals:</p>
+                                        <div className="grid grid-cols-2 gap-2 text-sm">
+                                            <div>Calories: <span className="font-bold">{Math.round(recommendations.recommendedCalories)}</span></div>
+                                            <div>Protein: <span className="font-bold">{Math.round(recommendations.recommendedProtein)}g</span></div>
+                                            <div>Carbs: <span className="font-bold">{Math.round(recommendations.recommendedCarbs)}g</span></div>
+                                            <div>Fats: <span className="font-bold">{Math.round(recommendations.recommendedFats)}g</span></div>
+                                        </div>
+                                        <button
+                                            onClick={applyRecommendations}
+                                            className="w-full mt-3 bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition-all"
+                                        >
+                                            Apply These Goals
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
+
+                            <div>
+                                <h4 className="font-semibold mb-4">Or Set Custom Goals</h4>
+                                <div className="space-y-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-2">Daily Calorie Goal</label>
+                                        <input
+                                            type="number"
+                                            value={userGoals.dailyCalorieGoal}
+                                            onChange={(e) => setUserGoals({...userGoals, dailyCalorieGoal: e.target.value})}
+                                            className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-2">Daily Protein Goal (g)</label>
+                                        <input
+                                            type="number"
+                                            value={userGoals.dailyProteinGoal}
+                                            onChange={(e) => setUserGoals({...userGoals, dailyProteinGoal: e.target.value})}
+                                            className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-2">Daily Carbs Goal (g)</label>
+                                        <input
+                                            type="number"
+                                            value={userGoals.dailyCarbsGoal}
+                                            onChange={(e) => setUserGoals({...userGoals, dailyCarbsGoal: e.target.value})}
+                                            className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-2">Daily Fats Goal (g)</label>
+                                        <input
+                                            type="number"
+                                            value={userGoals.dailyFatsGoal}
+                                            onChange={(e) => setUserGoals({...userGoals, dailyFatsGoal: e.target.value})}
+                                            className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="flex gap-4 mt-6">
+                                <button
+                                    onClick={() => setShowGoalsModal(false)}
+                                    className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-300 transition-all"
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    onClick={saveCustomGoals}
+                                    className="flex-1 bg-gradient-to-r from-green-500 to-green-600 text-white py-3 rounded-xl font-semibold hover:from-green-600 hover:to-green-700 transition-all"
+                                >
+                                    Save Goals
+                                </button>
+                            </div>
                         </div>
                     </div>
                 )}
