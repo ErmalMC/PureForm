@@ -1,0 +1,12 @@
+D:\Programming Files\PureForm\backend\PureForm.Domain\bin\Debug\net9.0\PureForm.Domain.deps.json
+D:\Programming Files\PureForm\backend\PureForm.Domain\bin\Debug\net9.0\PureForm.Domain.dll
+D:\Programming Files\PureForm\backend\PureForm.Domain\bin\Debug\net9.0\PureForm.Domain.pdb
+D:\Programming Files\PureForm\backend\PureForm.Domain\obj\Debug\net9.0\PureForm.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programming Files\PureForm\backend\PureForm.Domain\obj\Debug\net9.0\PureForm.Domain.AssemblyInfoInputs.cache
+D:\Programming Files\PureForm\backend\PureForm.Domain\obj\Debug\net9.0\PureForm.Domain.AssemblyInfo.cs
+D:\Programming Files\PureForm\backend\PureForm.Domain\obj\Debug\net9.0\PureForm.Domain.csproj.CoreCompileInputs.cache
+D:\Programming Files\PureForm\backend\PureForm.Domain\obj\Debug\net9.0\PureForm.Domain.sourcelink.json
+D:\Programming Files\PureForm\backend\PureForm.Domain\obj\Debug\net9.0\PureForm.Domain.dll
+D:\Programming Files\PureForm\backend\PureForm.Domain\obj\Debug\net9.0\refint\PureForm.Domain.dll
+D:\Programming Files\PureForm\backend\PureForm.Domain\obj\Debug\net9.0\PureForm.Domain.pdb
+D:\Programming Files\PureForm\backend\PureForm.Domain\obj\Debug\net9.0\ref\PureForm.Domain.dll
