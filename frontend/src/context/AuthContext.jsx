@@ -65,12 +65,36 @@ export const AuthProvider = ({ children }) => {
         setUser(null);
     };
 
+    // ADD THIS FUNCTION BEFORE THE VALUE OBJECT
+    const refreshUser = async () => {
+        try {
+            const savedToken = localStorage.getItem('token');
+            if (!savedToken) return;
+
+            const response = await fetch('http://localhost:5152/api/auth/me', {
+                headers: {
+                    'Authorization': `Bearer ${savedToken}`
+                }
+            });
+
+            if (response.ok) {
+                const userData = await response.json();
+                localStorage.setItem('user', JSON.stringify(userData));
+                setUser(userData);
+                console.log('User refreshed:', userData);
+            }
+        } catch (error) {
+            console.error('Failed to refresh user:', error);
+        }
+    };
+
     const value = {
         user,
         token,
         login,
         register,
         logout,
+        refreshUser, // ADD THIS
         isAuthenticated: !!token,
     };
 

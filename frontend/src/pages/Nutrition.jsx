@@ -44,10 +44,10 @@ const Nutrition = () => {
 
     const loadPopularFoods = async () => {
         try {
-            const foods = await foodApi.getPopular();
+            const foods = await foodApi.getAll(); // Use getAll instead of getPopular
             setPopularFoods(foods);
         } catch (error) {
-            console.error('Error loading popular foods:', error);
+            console.error('Error loading foods:', error);
         }
     };
 

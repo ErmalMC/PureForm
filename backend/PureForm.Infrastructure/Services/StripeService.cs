@@ -4,11 +4,6 @@ using PureForm.Domain.Entities;
 using PureForm.Infrastructure.Repositories;
 using Stripe;
 using Stripe.Checkout;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PureForm.Infrastructure.Services
 {
@@ -46,8 +41,8 @@ namespace PureForm.Infrastructure.Services
                 }
             },
                 Mode = "subscription",
-                SuccessUrl = "https://yourdomain.com/success?session_id={CHECKOUT_SESSION_ID}",
-                CancelUrl = "https://yourdomain.com/cancel",
+                SuccessUrl = "http://localhost:5173/success?session_id={CHECKOUT_SESSION_ID}",
+                CancelUrl = "http://localhost:5173/cancel",
                 ClientReferenceId = userId.ToString(),
                 CustomerEmail = user.Email
             };

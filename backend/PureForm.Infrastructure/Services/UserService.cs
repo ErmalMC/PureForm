@@ -64,11 +64,18 @@ namespace PureForm.Infrastructure.Services
             var user = await _userRepository.GetByIdAsync(id);
             if (user == null) return null;
 
+            // Update basic info
             if (dto.FirstName != null) user.FirstName = dto.FirstName;
             if (dto.LastName != null) user.LastName = dto.LastName;
             if (dto.Weight.HasValue) user.Weight = dto.Weight.Value;
             if (dto.Height.HasValue) user.Height = dto.Height.Value;
             if (dto.FitnessGoal != null) user.FitnessGoal = dto.FitnessGoal;
+
+            // ADD THESE LINES - Update nutrition goals
+            if (dto.DailyCalorieGoal.HasValue) user.DailyCalorieGoal = dto.DailyCalorieGoal.Value;
+            if (dto.DailyProteinGoal.HasValue) user.DailyProteinGoal = dto.DailyProteinGoal.Value;
+            if (dto.DailyCarbsGoal.HasValue) user.DailyCarbsGoal = dto.DailyCarbsGoal.Value;
+            if (dto.DailyFatsGoal.HasValue) user.DailyFatsGoal = dto.DailyFatsGoal.Value;
 
             user.UpdatedAt = DateTime.UtcNow;
 
@@ -85,6 +92,7 @@ namespace PureForm.Infrastructure.Services
             return true;
         }
 
+        // UPDATED - Include nutrition goals in the DTO mapping
         private static UserDto MapToDto(User user) => new()
         {
             Id = user.Id,
@@ -96,7 +104,12 @@ namespace PureForm.Infrastructure.Services
             Height = user.Height,
             Gender = user.Gender,
             FitnessGoal = user.FitnessGoal,
-            IsPremium = user.IsPremium
+            IsPremium = user.IsPremium,
+            // ADD THESE LINES
+            DailyCalorieGoal = user.DailyCalorieGoal,
+            DailyProteinGoal = user.DailyProteinGoal,
+            DailyCarbsGoal = user.DailyCarbsGoal,
+            DailyFatsGoal = user.DailyFatsGoal
         };
     }
 }

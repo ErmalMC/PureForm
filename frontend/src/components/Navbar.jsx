@@ -65,16 +65,18 @@ const Navbar = () => {
                             Profile
                         </button>
 
-                        <button
-                            onClick={() => navigate('/nutrition')}
-                            className={`px-4 py-2 rounded-lg font-semibold transition-all ${
-                                isActive('/nutrition')
-                                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
-                                    : 'text-gray-600 hover:bg-gray-100'
-                            }`}
-                        >
-                            Nutrition
-                        </button>
+                        {user.isPremium && (
+                            <button
+                                onClick={() => navigate('/nutrition')}
+                                className={`px-4 py-2 rounded-lg font-semibold transition-all ${
+                                    isActive('/nutrition')
+                                        ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
+                                        : 'text-gray-600 hover:bg-gray-100'
+                                }`}
+                            >
+                                Nutrition
+                            </button>
+                        )}  
 
                         {/* User Info */}
                         <div className="flex items-center gap-3 pl-4 ml-4 border-l-2 border-gray-200">

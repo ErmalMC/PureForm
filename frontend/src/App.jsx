@@ -1,20 +1,27 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
+import PremiumRoute from './components/PremiumRoute';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import WorkoutPlans from './pages/WorkoutPlans';
 import Profile from './pages/Profile';
 import Nutrition from "./pages/Nutrition.jsx";
+import PaymentSuccess from "./pages/PaymentSuccess.jsx";
+import PaymentCancel from "./pages/PaymentCancel.jsx";
+import Upgrade from "./pages/Upgrade.jsx";
 
 function App() {
     return (
         <BrowserRouter>
             <AuthProvider>
                 <Routes>
+                    <Route path="/success" element={<PaymentSuccess />} />
+                    <Route path="/cancel" element={<PaymentCancel />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
+
                     <Route
                         path="/dashboard"
                         element={
@@ -23,14 +30,29 @@ function App() {
                             </ProtectedRoute>
                         }
                     />
+
+                    {/* Add Upgrade page route */}
+                    <Route
+                        path="/upgrade"
+                        element={
+                            <ProtectedRoute>
+                                <Upgrade />
+                            </ProtectedRoute>
+                        }
+                    />
+
+                    {/* Change Nutrition to use PremiumRoute instead of ProtectedRoute */}
                     <Route
                         path="/nutrition"
                         element={
                             <ProtectedRoute>
-                                <Nutrition />
+                                <PremiumRoute>
+                                    <Nutrition />
+                                </PremiumRoute>
                             </ProtectedRoute>
                         }
                     />
+
                     <Route
                         path="/workouts"
                         element={
@@ -39,6 +61,7 @@ function App() {
                             </ProtectedRoute>
                         }
                     />
+
                     <Route
                         path="/profile"
                         element={
@@ -47,6 +70,7 @@ function App() {
                             </ProtectedRoute>
                         }
                     />
+
                     <Route path="/" element={<Navigate to="/dashboard" replace />} />
                 </Routes>
             </AuthProvider>

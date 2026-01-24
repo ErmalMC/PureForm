@@ -9,13 +9,28 @@ using PureForm.Application.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configure Kestrel to use Railway's PORT
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+
 // Add services to the container
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Database configuration
+// Database configuration - Support Railway environment variables
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+// Override with Railway MySQL environment variables if they exist
+if (!string.IsNullOrEmpty(Environment.GetEnvironmentVariable("MYSQLHOST")))
+{
+    connectionString = $"Server={Environment.GetEnvironmentVariable("MYSQLHOST")};" +
+                      $"Port={Environment.GetEnvironmentVariable("MYSQLPORT")};" +
+                      $"Database={Environment.GetEnvironmentVariable("MYSQLDATABASE")};" +
+                      $"User={Environment.GetEnvironmentVariable("MYSQLUSER")};" +
+                      $"Password={Environment.GetEnvironmentVariable("MYSQLPASSWORD")};";
+}
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
@@ -32,8 +47,17 @@ builder.Services.AddScoped<INutritionLogService, NutritionLogService>();
 builder.Services.AddScoped<INutritionCalculatorService, NutritionCalculatorService>();
 builder.Services.AddScoped<IFoodItemService, FoodItemService>();
 
-// JWT Authentication
-var jwtKey = builder.Configuration["Jwt:Key"] ?? throw new InvalidOperationException("JWT Key not configured");
+// JWT Authentication - Support environment variables
+var jwtKey = Environment.GetEnvironmentVariable("JWT_KEY")
+             ?? builder.Configuration["Jwt:Key"]
+             ?? throw new InvalidOperationException("JWT Key not configured");
+
+var jwtIssuer = Environment.GetEnvironmentVariable("JWT_ISSUER")
+                ?? builder.Configuration["Jwt:Issuer"];
+
+var jwtAudience = Environment.GetEnvironmentVariable("JWT_AUDIENCE")
+                  ?? builder.Configuration["Jwt:Audience"];
+
 var key = Encoding.ASCII.GetBytes(jwtKey);
 
 builder.Services.AddAuthentication(options =>
@@ -51,18 +75,25 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(key),
         ValidateIssuer = true,
         ValidateAudience = true,
-        ValidIssuer = builder.Configuration["Jwt:Issuer"],
-        ValidAudience = builder.Configuration["Jwt:Audience"],
+        ValidIssuer = jwtIssuer,
+        ValidAudience = jwtAudience,
         ClockSkew = TimeSpan.Zero
     };
 });
 
-// CORS
+// CORS - Support environment variable for frontend URL
+var frontendUrl = Environment.GetEnvironmentVariable("FRONTEND_URL") ?? "http://localhost:3000";
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp", policy =>
     {
-        policy.WithOrigins("http://localhost:3000", "http://localhost:5173", "http://localhost:5174")
+        policy.WithOrigins(
+                  "http://localhost:3000",
+                  "http://localhost:5173",
+                  "http://localhost:5174",
+                  frontendUrl  // Add your Vercel URL from environment variable
+              )
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials();
@@ -78,27 +109,31 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// Auto-seed food database on startup
-using (var scope = app.Services.CreateScope())
+// IMPORTANT: CORS must come BEFORE other middleware
+app.UseCors("AllowReactApp");
+
+//app.UseHttpsRedirection();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapControllers();
+
+if (!app.Environment.IsDevelopment())
 {
     try
     {
-        var foodService = scope.ServiceProvider.GetRequiredService<IFoodItemService>();
-        await foodService.SeedPopularFoodsAsync();
-        Console.WriteLine("✓ Food database seeded successfully");
+        using (var scope = app.Services.CreateScope())
+        {
+            var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            dbContext.Database.Migrate();
+        }
     }
     catch (Exception ex)
     {
-        Console.WriteLine($"Food seeding: {ex.Message}");
+        Console.WriteLine($"Migration failed: {ex.Message}");
+        throw;
     }
 }
-
-app.Run();
-
-app.UseCors("AllowReactApp");
-//app.UseHttpsRedirection();
-app.UseAuthentication();
-app.UseAuthorization();
-app.MapControllers();
 
 app.Run();

@@ -106,9 +106,6 @@ namespace PureForm.Infrastructure.Migrations
                     b.Property<decimal>("FatsPer100g")
                         .HasColumnType("decimal(65,30)");
 
-                    b.Property<bool>("IsPopular")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(200)
@@ -120,8 +117,6 @@ namespace PureForm.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("Category");
-
-                    b.HasIndex("IsPopular");
 
                     b.HasIndex("Name");
 

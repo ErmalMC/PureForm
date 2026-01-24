@@ -98,7 +98,6 @@ namespace PureForm.Infrastructure.Data
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(200);
                 entity.HasIndex(e => e.Name);
                 entity.HasIndex(e => e.Category);
-                entity.HasIndex(e => e.IsPopular);
             });
         }
     }

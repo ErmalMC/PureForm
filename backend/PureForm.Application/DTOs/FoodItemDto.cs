@@ -10,5 +10,5 @@ public class FoodItemDto
     public decimal CarbsPer100g { get; set; }
     public decimal FatsPer100g { get; set; }
     public string DefaultUnit { get; set; } = "g";
-    public bool IsPopular { get; set; }
+    
 }

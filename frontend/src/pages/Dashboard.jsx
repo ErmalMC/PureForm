@@ -117,6 +117,76 @@ const Dashboard = () => {
                     </div>
                 </div>
 
+                {/* Premium Banner */}
+                {!user.isPremium && (
+                    <div className="bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 rounded-2xl shadow-2xl p-8 mb-8 text-white relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32"></div>
+                        <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full -ml-24 -mb-24"></div>
+
+                        <div className="relative z-10">
+                            <div className="flex items-center gap-3 mb-4">
+                                <span className="text-4xl">⭐</span>
+                                <h3 className="text-3xl font-bold">Unlock Premium Features</h3>
+                            </div>
+
+                            <p className="text-lg mb-6 text-white/90">
+                                Get AI-powered meal plans, advanced nutrition tracking, personalized workout adjustments, and priority support!
+                            </p>
+
+                            <div className="flex flex-wrap gap-4 mb-6">
+                                <div className="flex items-center gap-2">
+                                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                    </svg>
+                                    <span className="font-medium">Custom Meal Plans</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                    </svg>
+                                    <span className="font-medium">Advanced Analytics</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                    </svg>
+                                    <span className="font-medium">Priority Support</span>
+                                </div>
+                            </div>
+
+                            <button
+                                onClick={async () => {
+                                    try {
+                                        const response = await fetch('http://localhost:5152/api/stripe/create-checkout-session', {
+                                            method: 'POST',
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                                'Authorization': `Bearer ${localStorage.getItem('token')}`
+                                            },
+                                            body: JSON.stringify({
+                                                userId: user.id,
+                                                priceId: 'price_1Sss8sDlMwMJ1RUdfPnx4pT9'
+                                            })
+                                        });
+
+                                        const { url } = await response.json();
+                                        window.location.href = url;
+                                    } catch (error) {
+                                        console.error('Error:', error);
+                                        alert('Failed to start checkout. Please try again.');
+                                    }
+                                }}
+                                className="bg-white text-orange-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl transform hover:scale-105 inline-flex items-center gap-2"
+                            >
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                                Upgrade to Premium - $9.99/month
+                            </button>
+                        </div>
+                    </div>
+                )}
+
                 {/* Quick Actions */}
                 <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
                     <h3 className="text-2xl font-bold text-gray-900 mb-6">Quick Actions</h3>
@@ -132,15 +202,34 @@ const Dashboard = () => {
                             {loading ? 'Generating...' : 'Generate AI Plan'}
                         </button>
 
-                        <button
-                            onClick={() => navigate('/workouts')}
-                            className="bg-gradient-to-r from-green-500 to-green-600 text-white p-6 rounded-xl font-semibold hover:from-green-600 hover:to-green-700 transition-all shadow-lg hover:shadow-2xl transform hover:scale-105"
-                        >
-                            <svg className="w-8 h-8 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                            </svg>
-                            View All Workouts
-                        </button>
+                        {/* Nutrition Card - Locked/Unlocked */}
+                        {!user.isPremium ? (
+                            <div className="relative bg-gradient-to-r from-gray-100 to-gray-200 p-6 rounded-xl opacity-75 cursor-not-allowed">
+                                <div className="absolute top-2 right-2 bg-yellow-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                                    PREMIUM
+                                </div>
+                                <svg className="w-8 h-8 mx-auto mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                </svg>
+                                <span className="text-gray-600 font-semibold block mb-2">Nutrition Tracking</span>
+                                <button
+                                    onClick={() => navigate('/upgrade')}
+                                    className="text-blue-600 text-sm font-medium hover:underline"
+                                >
+                                    Unlock Now →
+                                </button>
+                            </div>
+                        ) : (
+                            <button
+                                onClick={() => navigate('/nutrition')}
+                                className="bg-gradient-to-r from-green-500 to-green-600 text-white p-6 rounded-xl font-semibold hover:from-green-600 hover:to-green-700 transition-all shadow-lg hover:shadow-2xl transform hover:scale-105"
+                            >
+                                <svg className="w-8 h-8 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                </svg>
+                                Track Nutrition
+                            </button>
+                        )}
 
                         <button
                             onClick={() => navigate('/profile')}

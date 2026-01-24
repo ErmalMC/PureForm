@@ -6,3 +6,15 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+# Secrets and configuration files
+**/appsettings.json
+**/appsettings.*.json
+!**/appsettings.Development.json
+**/*.env
+.env
+.env.local
+**/appsettings.json
+
+# Build results
+**/bin/
+**/obj/
