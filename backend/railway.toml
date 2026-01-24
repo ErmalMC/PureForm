@@ -1,0 +1,17 @@
+[build]
+builder = "nixpacks"
+
+[build.nixpacksPlan.phases.install]
+cmds = ["mkdir -p /root/.nuget/packages"]
+
+[build.nixpacksPlan.phases.setup]
+nixPkgs = ["...", "dotnet-sdk_9"]
+
+[build.nixpacksPlan.phases.build]
+cmds = [
+    "dotnet restore PureForm.sln",
+    "dotnet publish PureForm.sln -c Release -o out --no-restore"
+]
+
+[deploy]
+startCommand = "dotnet out/PureForm.WebAPI.dll"

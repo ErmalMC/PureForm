@@ -1,5 +1,0 @@
-[phases.build]
-cmds = [
-    "dotnet restore PureForm.sln",
-    "dotnet publish PureForm.WebAPI/PureForm.WebAPI.csproj -c Release -o out"
-]
