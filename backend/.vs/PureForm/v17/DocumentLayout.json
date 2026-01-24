@@ -3,24 +3,8 @@
   "WorkspaceRootPath": "D:\\Programming Files\\PureForm\\backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1F84EA61-911F-4D18-8493-F977542DF6DD}|PureForm.WebAPI\\PureForm.WebAPI.csproj|d:\\programming files\\pureform\\backend\\pureform.webapi\\appsettings.example.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{1F84EA61-911F-4D18-8493-F977542DF6DD}|PureForm.WebAPI\\PureForm.WebAPI.csproj|solutionrelative:pureform.webapi\\appsettings.example.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F84EA61-911F-4D18-8493-F977542DF6DD}|PureForm.WebAPI\\PureForm.WebAPI.csproj|d:\\programming files\\pureform\\backend\\pureform.webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{1F84EA61-911F-4D18-8493-F977542DF6DD}|PureForm.WebAPI\\PureForm.WebAPI.csproj|solutionrelative:pureform.webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F84EA61-911F-4D18-8493-F977542DF6DD}|PureForm.WebAPI\\PureForm.WebAPI.csproj|d:\\programming files\\pureform\\backend\\pureform.webapi\\nuget.config||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{1F84EA61-911F-4D18-8493-F977542DF6DD}|PureForm.WebAPI\\PureForm.WebAPI.csproj|solutionrelative:pureform.webapi\\nuget.config||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1F84EA61-911F-4D18-8493-F977542DF6DD}|PureForm.WebAPI\\PureForm.WebAPI.csproj|d:\\programming files\\pureform\\backend\\pureform.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1F84EA61-911F-4D18-8493-F977542DF6DD}|PureForm.WebAPI\\PureForm.WebAPI.csproj|solutionrelative:pureform.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BBAD4D35-2A9A-4063-B552-09BC709C2917}|PureForm.Infrastructure\\PureForm.Infrastructure.csproj|d:\\programming files\\pureform\\backend\\pureform.infrastructure\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBAD4D35-2A9A-4063-B552-09BC709C2917}|PureForm.Infrastructure\\PureForm.Infrastructure.csproj|solutionrelative:pureform.infrastructure\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -43,63 +27,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "appsettings.Example.json",
-              "DocumentMoniker": "D:\\Programming Files\\PureForm\\backend\\PureForm.WebAPI\\appsettings.Example.json",
-              "RelativeDocumentMoniker": "PureForm.WebAPI\\appsettings.Example.json",
-              "ToolTip": "D:\\Programming Files\\PureForm\\backend\\PureForm.WebAPI\\appsettings.Example.json",
-              "RelativeToolTip": "PureForm.WebAPI\\appsettings.Example.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAcwBcAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-01-24T20:10:17.751Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "nuget.config",
-              "DocumentMoniker": "D:\\Programming Files\\PureForm\\backend\\PureForm.WebAPI\\nuget.config",
-              "RelativeDocumentMoniker": "PureForm.WebAPI\\nuget.config",
-              "ToolTip": "D:\\Programming Files\\PureForm\\backend\\PureForm.WebAPI\\nuget.config",
-              "RelativeToolTip": "PureForm.WebAPI\\nuget.config",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2026-01-24T20:02:09.172Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\Programming Files\\PureForm\\backend\\PureForm.WebAPI\\appsettings.json",
-              "RelativeDocumentMoniker": "PureForm.WebAPI\\appsettings.json",
-              "ToolTip": "D:\\Programming Files\\PureForm\\backend\\PureForm.WebAPI\\appsettings.json",
-              "RelativeToolTip": "PureForm.WebAPI\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAcwBcAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-01-24T19:36:01.931Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Programming Files\\PureForm\\backend\\PureForm.WebAPI\\Program.cs",
               "RelativeDocumentMoniker": "PureForm.WebAPI\\Program.cs",
               "ToolTip": "D:\\Programming Files\\PureForm\\backend\\PureForm.WebAPI\\Program.cs",
               "RelativeToolTip": "PureForm.WebAPI\\Program.cs",
-              "ViewState": "AgIAAHMAAAAAAAAAAAAgwIoAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAwwGkAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-24T19:35:56.705Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "D:\\Programming Files\\PureForm\\backend\\PureForm.Infrastructure\\Services\\UserService.cs",
-              "RelativeDocumentMoniker": "PureForm.Infrastructure\\Services\\UserService.cs",
-              "ToolTip": "D:\\Programming Files\\PureForm\\backend\\PureForm.Infrastructure\\Services\\UserService.cs",
-              "RelativeToolTip": "PureForm.Infrastructure\\Services\\UserService.cs",
-              "ViewState": "AgIAAFsAAAAAAAAAAAAgwGIAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-23T22:37:50.685Z"
+              "WhenOpened": "2026-01-24T19:35:56.705Z",
+              "EditorCaption": ""
             }
           ]
         }

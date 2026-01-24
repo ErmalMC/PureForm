@@ -3911,7 +3911,8 @@
     ]
   },
   "packageFolders": {
-    "D:\\root\\.nuget\\packages": {}
+    "C:\\Users\\ermal\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
@@ -3919,11 +3920,13 @@
       "projectUniqueName": "D:\\Programming Files\\PureForm\\backend\\PureForm.WebAPI\\PureForm.WebAPI.csproj",
       "projectName": "PureForm.WebAPI",
       "projectPath": "D:\\Programming Files\\PureForm\\backend\\PureForm.WebAPI\\PureForm.WebAPI.csproj",
-      "packagesPath": "D:\\root\\.nuget\\packages",
+      "packagesPath": "C:\\Users\\ermal\\.nuget\\packages\\",
       "outputPath": "D:\\Programming Files\\PureForm\\backend\\PureForm.WebAPI\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "D:\\Programming Files\\PureForm\\backend\\PureForm.WebAPI\\NuGet.Config",
         "C:\\Users\\ermal\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -3932,6 +3935,7 @@
         "net9.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },

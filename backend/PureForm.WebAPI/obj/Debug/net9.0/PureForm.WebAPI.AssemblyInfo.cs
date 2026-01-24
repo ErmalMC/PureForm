@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PureForm.WebAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1cc3d9fdb6e60e0387737428173e7d68fe4a2549")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+99102ae279523fbad850ad2b89deaceecf6affb5")]
 [assembly: System.Reflection.AssemblyProductAttribute("PureForm.WebAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PureForm.WebAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

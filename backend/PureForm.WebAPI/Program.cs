@@ -92,8 +92,24 @@ builder.Services.AddCors(options =>
                   "http://localhost:3000",
                   "http://localhost:5173",
                   "http://localhost:5174",
-                  frontendUrl  // Add your Vercel URL from environment variable
+                  frontendUrl
               )
+              .SetIsOriginAllowed(origin =>
+              {
+                  // Allow any Vercel deployment
+                  if (origin.EndsWith(".vercel.app", StringComparison.OrdinalIgnoreCase))
+                      return true;
+
+                  // Allow configured origins
+                  var allowedOrigins = new[]
+                  {
+                      "http://localhost:3000",
+                      "http://localhost:5173",
+                      "http://localhost:5174",
+                      frontendUrl
+                  };
+                  return allowedOrigins.Contains(origin);
+              })
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials();
