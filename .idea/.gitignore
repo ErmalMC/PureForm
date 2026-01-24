@@ -18,3 +18,4 @@
 # Build results
 **/bin/
 **/obj/
+../.vs

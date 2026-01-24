@@ -56,15 +56,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "NuGet.Config",
-              "DocumentMoniker": "D:\\Programming Files\\PureForm\\backend\\PureForm.WebAPI\\NuGet.Config",
-              "RelativeDocumentMoniker": "PureForm.WebAPI\\NuGet.Config",
-              "ToolTip": "D:\\Programming Files\\PureForm\\backend\\PureForm.WebAPI\\NuGet.Config",
-              "RelativeToolTip": "PureForm.WebAPI\\NuGet.Config",
+              "Title": "nuget.config",
+              "DocumentMoniker": "D:\\Programming Files\\PureForm\\backend\\PureForm.WebAPI\\nuget.config",
+              "RelativeDocumentMoniker": "PureForm.WebAPI\\nuget.config",
+              "ToolTip": "D:\\Programming Files\\PureForm\\backend\\PureForm.WebAPI\\nuget.config",
+              "RelativeToolTip": "PureForm.WebAPI\\nuget.config",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2026-01-24T20:02:09.172Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-24T20:02:09.172Z"
             },
             {
               "$type": "Document",
@@ -76,8 +75,7 @@
               "RelativeToolTip": "PureForm.WebAPI\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAcwBcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-01-24T19:36:01.931Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-24T19:36:01.931Z"
             },
             {
               "$type": "Document",
