@@ -1,0 +1,11 @@
+[phases.setup]
+nixPkgs = ["dotnet-sdk_9"]
+
+[phases.install]
+cmds = ["dotnet restore"]
+
+[phases.build]
+cmds = ["dotnet publish PureForm.WebAPI/PureForm.WebAPI.csproj -c Release -o out"]
+
+[start]
+cmd = "dotnet out/PureForm.WebAPI.dll"
