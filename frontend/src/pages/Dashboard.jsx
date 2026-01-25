@@ -3,6 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import { workoutApi } from '../api/workoutApi';
 import { useNavigate } from 'react-router-dom';
 import Navbar from "../components/Navbar.jsx";
+import api from '../api/axiosConfig';
 
 const Dashboard = () => {
     const { user, logout } = useAuth();
@@ -157,7 +158,7 @@ const Dashboard = () => {
                             <button
                                 onClick={async () => {
                                     try {
-                                        const response = await fetch('http://localhost:5152/api/stripe/create-checkout-session', {
+                                        const response = await api.post('/stripe/create-checkout-session', {
                                             method: 'POST',
                                             headers: {
                                                 'Content-Type': 'application/json',

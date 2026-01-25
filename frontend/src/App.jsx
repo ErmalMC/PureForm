@@ -31,6 +31,7 @@ function App() {
 
                     <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>}/>
 
+
                     <Route path="/" element={<Navigate to="/dashboard" replace />} />
                 </Routes>
             </AuthProvider>

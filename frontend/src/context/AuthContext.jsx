@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { authApi } from '../api/authApi';
+import api from '../api/axiosConfig';
 
 const AuthContext = createContext(null);
 
@@ -69,18 +70,12 @@ export const AuthProvider = ({ children }) => {
             const savedToken = localStorage.getItem('token');
             if (!savedToken) return;
 
-            const response = await fetch('http://localhost:5152/api/auth/me', {
-                headers: {
-                    'Authorization': `Bearer ${savedToken}`
-                }
-            });
+            const response = await api.get('/auth/me');
 
-            if (response.ok) {
-                const userData = await response.json();
-                localStorage.setItem('user', JSON.stringify(userData));
-                setUser(userData);
-                console.log('User refreshed:', userData);
-            }
+            const userData = response.data;
+            localStorage.setItem('user', JSON.stringify(userData));
+            setUser(userData);
+            console.log('User refreshed:', userData);
         } catch (error) {
             console.error('Failed to refresh user:', error);
         }

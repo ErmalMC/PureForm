@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import api from '../api/axiosConfig';
+
 
 const Upgrade = () => {
     const { user } = useAuth();
@@ -7,7 +9,7 @@ const Upgrade = () => {
 
     const handleUpgrade = async () => {
         try {
-            const response = await fetch('http://localhost:5152/api/stripe/create-checkout-session', {
+            const response = await api.post('/stripe/create-checkout-session', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

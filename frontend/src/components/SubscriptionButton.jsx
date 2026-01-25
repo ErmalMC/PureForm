@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import api from '../api/axiosConfig';
 
 function SubscriptionButton({ userId }) {
     const [loading, setLoading] = useState(false);
@@ -6,7 +7,7 @@ function SubscriptionButton({ userId }) {
     const handleSubscribe = async () => {
         setLoading(true);
         try {
-            const response = await fetch('http://localhost:5152/api/stripe/create-checkout-session', {
+            const response = await api.post('/stripe/create-checkout-session',{
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
