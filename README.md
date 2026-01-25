@@ -2,7 +2,7 @@
 
 A modern full-stack fitness and nutrition tracking platform built with .NET 8 and React. Features intelligent workout logging, comprehensive nutrition tracking with AI-powered macro recommendations, and data-driven progress analytics.
 
-[![.NET](https://img.shields.io/badge/.NET-8.0-512BD4?logo=dotnet)](https://dotnet.microsoft.com/)
+[![.NET](https://img.shields.io/badge/.NET-9.0-512BD4?logo=dotnet)](https://dotnet.microsoft.com/)
 [![React](https://img.shields.io/badge/React-18.3-61DAFB?logo=react)](https://reactjs.org/)
 [![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?logo=mysql)](https://www.mysql.com/)
 
@@ -16,7 +16,7 @@ A modern full-stack fitness and nutrition tracking platform built with .NET 8 an
 ## 🛠️ Tech Stack
 
 **Frontend**: React 18 • TailwindCSS • React Router • Axios • Recharts  
-**Backend**: .NET 8 • ASP.NET Core Web API • Entity Framework Core • JWT Auth • BCrypt  
+**Backend**: .NET 9 • ASP.NET Core Web API • Entity Framework Core • JWT Auth • BCrypt  
 **Database**: MySQL 8.0  
 **Architecture**: Clean Architecture with Repository Pattern, DTOs, Dependency Injection
 
