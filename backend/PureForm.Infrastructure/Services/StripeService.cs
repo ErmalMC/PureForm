@@ -22,11 +22,11 @@ namespace PureForm.Infrastructure.Services
             _subscriptionRepository = subscriptionRepository;
 
 
-            _webhookSecret = Environment.GetEnvironmentVariable("STRIPE_WEBHOOK_SECRET")
+            _webhookSecret = Environment.GetEnvironmentVariable("STRIPE_WEBHOOKSECRET")
                              ?? configuration["Stripe:WebhookSecret"]
                              ?? "";
 
-            StripeConfiguration.ApiKey = Environment.GetEnvironmentVariable("STRIPE_SECRET_KEY")
+            StripeConfiguration.ApiKey = Environment.GetEnvironmentVariable("STRIPE_SECRETKEY")
                                          ?? configuration["Stripe:SecretKey"]
                                          ?? throw new Exception("Stripe API key not configured");
         }
