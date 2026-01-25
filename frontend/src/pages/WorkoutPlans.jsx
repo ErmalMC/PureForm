@@ -100,7 +100,7 @@ const WorkoutPlans = () => {
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                             </svg>
-                            Generate AI Plan
+                            Generate Plan
                         </button>
                         <button
                             onClick={() => setShowCreateModal(true)}
@@ -127,13 +127,13 @@ const WorkoutPlans = () => {
                             </svg>
                         </div>
                         <h3 className="text-2xl font-bold text-gray-900 mb-3">No workout plans yet</h3>
-                        <p className="text-gray-500 mb-8 max-w-md mx-auto">Start your fitness journey by creating a personalized workout plan or let our AI generate one for you!</p>
+                        <p className="text-gray-500 mb-8 max-w-md mx-auto">Start your fitness journey by creating a personalized workout plan or let us generate one for you!</p>
                         <div className="flex gap-4 justify-center">
                             <button
                                 onClick={() => setShowGenerateModal(true)}
                                 className="bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-green-600 hover:to-green-700 shadow-lg"
                             >
-                                Generate AI Plan
+                                Generate Plan
                             </button>
                             <button
                                 onClick={() => setShowCreateModal(true)}
@@ -194,11 +194,11 @@ const WorkoutPlans = () => {
                     </div>
                 )}
 
-                {/* Generate AI Plan Modal - NEW */}
+                {/* Generate Plan Modal - NEW */}
                 {showGenerateModal && (
                     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                         <div className="bg-white rounded-2xl p-8 max-w-md w-full mx-4">
-                            <h3 className="text-2xl font-bold mb-2">Generate AI Workout Plan</h3>
+                            <h3 className="text-2xl font-bold mb-2">Generate Workout Plan</h3>
                             <p className="text-gray-600 mb-6">Choose your difficulty level and we'll create a personalized workout plan based on your fitness goal: <span className="font-semibold text-blue-600">{user.fitnessGoal}</span></p>
 
                             <div className="mb-6">

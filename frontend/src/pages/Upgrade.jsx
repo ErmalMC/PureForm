@@ -70,7 +70,7 @@ const Upgrade = () => {
                                 </svg>
                             </div>
                             <div>
-                                <h3 className="font-semibold text-gray-900 text-lg">AI-Powered Meal Plans</h3>
+                                <h3 className="font-semibold text-gray-900 text-lg">Generated Powered Meal Plans</h3>
                                 <p className="text-gray-600">Get personalized meal plans based on your goals and preferences</p>
                             </div>
                         </div>
