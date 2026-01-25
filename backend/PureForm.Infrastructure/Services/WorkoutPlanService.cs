@@ -94,7 +94,7 @@ public class WorkoutPlanService : IWorkoutPlanService
         var difficulty = difficultyLevel ?? "Intermediate";
 
         var planName = $"{difficulty} {user.FitnessGoal} Plan";
-        var description = $" generated {difficulty.ToLower()} workout plan customized for {user.FirstName}'s {user.FitnessGoal.ToLower()} goals";
+        var description = $"Custom generated {difficulty.ToLower()} workout plan customized for {user.FirstName}'s {user.FitnessGoal.ToLower()} goals";
 
         var plan = new WorkoutPlan
         {
