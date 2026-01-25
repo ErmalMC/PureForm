@@ -20,8 +20,15 @@ namespace PureForm.Infrastructure.Services
         {
             _userRepository = userRepository;
             _subscriptionRepository = subscriptionRepository;
-            _webhookSecret = configuration["Stripe:WebhookSecret"] ?? "";
-            StripeConfiguration.ApiKey = configuration["Stripe:SecretKey"];
+
+
+            _webhookSecret = Environment.GetEnvironmentVariable("STRIPE_WEBHOOK_SECRET")
+                             ?? configuration["Stripe:WebhookSecret"]
+                             ?? "";
+
+            StripeConfiguration.ApiKey = Environment.GetEnvironmentVariable("STRIPE_SECRET_KEY")
+                                         ?? configuration["Stripe:SecretKey"]
+                                         ?? throw new Exception("Stripe API key not configured");
         }
 
         public async Task<string> CreateCheckoutSessionAsync(int userId, string priceId)
@@ -29,20 +36,23 @@ namespace PureForm.Infrastructure.Services
             var user = await _userRepository.GetByIdAsync(userId);
             if (user == null) throw new Exception("User not found");
 
+            var frontendUrl = Environment.GetEnvironmentVariable("FRONTEND_URL")
+                              ?? "http://localhost:5173";
+
             var options = new SessionCreateOptions
             {
                 PaymentMethodTypes = new List<string> { "card" },
                 LineItems = new List<SessionLineItemOptions>
-            {
-                new()
                 {
-                    Price = priceId,
-                    Quantity = 1
-                }
-            },
+                    new()
+                    {
+                        Price = priceId,
+                        Quantity = 1
+                    }
+                },
                 Mode = "subscription",
-                SuccessUrl = "http://localhost:5173/success?session_id={CHECKOUT_SESSION_ID}",
-                CancelUrl = "http://localhost:5173/cancel",
+                SuccessUrl = $"{frontendUrl}/success?session_id={{CHECKOUT_SESSION_ID}}",
+                CancelUrl = $"{frontendUrl}/cancel",
                 ClientReferenceId = userId.ToString(),
                 CustomerEmail = user.Email
             };
