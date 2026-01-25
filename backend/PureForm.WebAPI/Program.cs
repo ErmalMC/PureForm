@@ -143,6 +143,10 @@ if (!app.Environment.IsDevelopment())
         {
             var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
             dbContext.Database.Migrate();
+
+            var foodService = scope.ServiceProvider.GetRequiredService<IFoodItemService>();
+            await foodService.SeedPopularFoodsAsync();
+            Console.WriteLine("Food items seeding completed.");
         }
     }
     catch (Exception ex)
