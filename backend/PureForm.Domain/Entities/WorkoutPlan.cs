@@ -17,7 +17,6 @@ namespace PureForm.Domain.Entities
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
 
-        // Navigation properties
         public User User { get; set; } = null!;
         public ICollection<Exercise> Exercises { get; set; } = new List<Exercise>();
     }

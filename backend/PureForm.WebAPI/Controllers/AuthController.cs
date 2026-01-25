@@ -23,7 +23,6 @@ public class AuthController : ControllerBase
     [HttpPost("register")]
     public async Task<ActionResult<AuthResponseDto>> Register([FromBody] RegisterDto dto)
     {
-        // Check if user already exists
         if (await _authService.UserExistsAsync(dto.Email))
         {
             return BadRequest(new { message = "User with this email already exists" });
@@ -50,7 +49,6 @@ public class AuthController : ControllerBase
         return Ok(new { exists });
     }
 
-    // ADD THIS NEW ENDPOINT
     [HttpGet("me")]
     [Authorize]
     public async Task<IActionResult> GetCurrentUser()

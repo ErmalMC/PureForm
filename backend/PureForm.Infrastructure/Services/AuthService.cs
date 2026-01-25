@@ -28,7 +28,7 @@ public class AuthService : IAuthService
             return null;
 
         var token = _jwtService.GenerateToken(user);
-        var expiryMinutes = 1440; // Should come from config
+        var expiryMinutes = 1440;
 
         return new AuthResponseDto
         {

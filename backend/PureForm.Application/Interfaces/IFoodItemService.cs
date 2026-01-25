@@ -1,4 +1,4 @@
-﻿    namespace PureForm.Application.Interfaces;
+﻿namespace PureForm.Application.Interfaces;
 using PureForm.Application.DTOs;
 
 public interface IFoodItemService

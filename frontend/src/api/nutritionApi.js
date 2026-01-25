@@ -1,6 +1,3 @@
-// ============================================================
-// src/api/nutritionApi.js
-// ============================================================
 import api from './axiosConfig';
 
 export const nutritionApi = {

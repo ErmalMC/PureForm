@@ -1,7 +1,4 @@
-﻿// ============================================================
-// PureForm.Infrastructure/Services/NutritionLogService.cs
-// ============================================================
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using PureForm.Application.DTOs;
 using PureForm.Application.Interfaces;
 using PureForm.Domain.Entities;

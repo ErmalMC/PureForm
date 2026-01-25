@@ -21,8 +21,6 @@ namespace PureForm.Domain.Entities
         public string? ImageUrl { get; set; }
         public int OrderIndex { get; set; }
         public DateTime CreatedAt { get; set; }
-
-        // Navigation properties
         public WorkoutPlan WorkoutPlan { get; set; } = null!;
     }
 }

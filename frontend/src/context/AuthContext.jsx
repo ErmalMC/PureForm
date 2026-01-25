@@ -9,7 +9,6 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Check if user is already logged in
         const savedToken = localStorage.getItem('token');
         const savedUser = localStorage.getItem('user');
 
@@ -65,7 +64,6 @@ export const AuthProvider = ({ children }) => {
         setUser(null);
     };
 
-    // ADD THIS FUNCTION BEFORE THE VALUE OBJECT
     const refreshUser = async () => {
         try {
             const savedToken = localStorage.getItem('token');

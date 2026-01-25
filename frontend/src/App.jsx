@@ -22,54 +22,14 @@ function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
 
-                    <Route
-                        path="/dashboard"
-                        element={
-                            <ProtectedRoute>
-                                <Dashboard />
-                            </ProtectedRoute>
-                        }
-                    />
+                    <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>}/>
+                    <Route path="/upgrade" element={<ProtectedRoute><Upgrade /></ProtectedRoute>}/>
 
-                    {/* Add Upgrade page route */}
-                    <Route
-                        path="/upgrade"
-                        element={
-                            <ProtectedRoute>
-                                <Upgrade />
-                            </ProtectedRoute>
-                        }
-                    />
+                    <Route path="/nutrition" element={<ProtectedRoute><PremiumRoute><Nutrition /></PremiumRoute></ProtectedRoute>}/>
 
-                    {/* Change Nutrition to use PremiumRoute instead of ProtectedRoute */}
-                    <Route
-                        path="/nutrition"
-                        element={
-                            <ProtectedRoute>
-                                <PremiumRoute>
-                                    <Nutrition />
-                                </PremiumRoute>
-                            </ProtectedRoute>
-                        }
-                    />
+                    <Route path="/workouts" element={<ProtectedRoute><WorkoutPlans /></ProtectedRoute>}/>
 
-                    <Route
-                        path="/workouts"
-                        element={
-                            <ProtectedRoute>
-                                <WorkoutPlans />
-                            </ProtectedRoute>
-                        }
-                    />
-
-                    <Route
-                        path="/profile"
-                        element={
-                            <ProtectedRoute>
-                                <Profile />
-                            </ProtectedRoute>
-                        }
-                    />
+                    <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>}/>
 
                     <Route path="/" element={<Navigate to="/dashboard" replace />} />
                 </Routes>

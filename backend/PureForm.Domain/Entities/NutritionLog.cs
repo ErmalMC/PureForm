@@ -20,8 +20,6 @@ namespace PureForm.Domain.Entities
         public decimal ServingSize { get; set; }
         public string ServingUnit { get; set; } = string.Empty;
         public DateTime CreatedAt { get; set; }
-
-        // Navigation properties
         public User User { get; set; } = null!;
     }
 }

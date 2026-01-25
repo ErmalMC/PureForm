@@ -12,15 +12,12 @@ public class UserDto
     public string Gender { get; set; } = string.Empty;
     public string FitnessGoal { get; set; } = string.Empty;
     public bool IsPremium { get; set; }
-
-    // NEW: Nutrition Goals
     public decimal? DailyCalorieGoal { get; set; }
     public decimal? DailyProteinGoal { get; set; }
     public decimal? DailyCarbsGoal { get; set; }
     public decimal? DailyFatsGoal { get; set; }
 }
 
-// ADD THIS CLASS - It was missing!
 public class CreateUserDto
 {
     public string Email { get; set; } = string.Empty;
@@ -41,8 +38,6 @@ public class UpdateUserDto
     public decimal? Weight { get; set; }
     public decimal? Height { get; set; }
     public string? FitnessGoal { get; set; }
-
-    // NEW: Allow updating goals
     public decimal? DailyCalorieGoal { get; set; }
     public decimal? DailyProteinGoal { get; set; }
     public decimal? DailyCarbsGoal { get; set; }

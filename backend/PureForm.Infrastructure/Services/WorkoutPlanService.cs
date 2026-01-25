@@ -108,7 +108,6 @@ public class WorkoutPlanService : IWorkoutPlanService
 
         var created = await _workoutPlanRepository.AddAsync(plan);
 
-        // Generate exercises based on fitness goal AND difficulty
         var exercises = GenerateExercisesForGoalAndDifficulty(user.FitnessGoal, difficulty, created.Id);
 
         foreach (var exercise in exercises)
@@ -116,7 +115,7 @@ public class WorkoutPlanService : IWorkoutPlanService
             await _exerciseRepository.AddAsync(exercise);
         }
 
-        // Reload plan with exercises
+
         var planWithExercises = await _context.WorkoutPlans
             .Include(wp => wp.Exercises)
             .FirstOrDefaultAsync(wp => wp.Id == created.Id);

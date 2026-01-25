@@ -1,6 +1,3 @@
-// ============================================================
-// src/pages/Profile.jsx
-// ============================================================
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { userApi } from '../api/userApi';
@@ -35,14 +32,12 @@ const Profile = () => {
         try {
             await userApi.update(user.id, formData);
 
-            // Update local storage
             const updatedUser = { ...user, ...formData };
             localStorage.setItem('user', JSON.stringify(updatedUser));
 
             setSuccessMessage('Profile updated successfully!');
             setIsEditing(false);
 
-            // Reload page to reflect changes
             setTimeout(() => {
                 window.location.reload();
             }, 1500);

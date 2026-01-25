@@ -11,13 +11,12 @@ const PaymentSuccess = () => {
     useEffect(() => {
         const sessionId = searchParams.get('session_id');
 
-        // Give webhook time to process, then refresh user data
         const timer = setTimeout(async () => {
             if (refreshUser) {
                 await refreshUser();
             }
             setLoading(false);
-        }, 3000); // Wait 3 seconds for webhook to process
+        }, 3000);
 
         return () => clearTimeout(timer);
     }, [searchParams, refreshUser]);

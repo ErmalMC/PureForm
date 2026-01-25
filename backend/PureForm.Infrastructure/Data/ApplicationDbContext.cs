@@ -25,7 +25,7 @@ namespace PureForm.Infrastructure.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // User configuration
+
             modelBuilder.Entity<User>(entity =>
             {
                 entity.HasKey(e => e.Id);
@@ -35,14 +35,13 @@ namespace PureForm.Infrastructure.Data
                 entity.Property(e => e.LastName).IsRequired().HasMaxLength(100);
                 entity.Property(e => e.Weight).HasPrecision(5, 2);
                 entity.Property(e => e.Height).HasPrecision(5, 2);
-                // NEW: Goals
                 entity.Property(e => e.DailyCalorieGoal).HasPrecision(7, 2);
                 entity.Property(e => e.DailyProteinGoal).HasPrecision(6, 2);
                 entity.Property(e => e.DailyCarbsGoal).HasPrecision(6, 2);
                 entity.Property(e => e.DailyFatsGoal).HasPrecision(6, 2);
             });
 
-            // WorkoutPlan configuration
+
             modelBuilder.Entity<WorkoutPlan>(entity =>
             {
                 entity.HasKey(e => e.Id);
@@ -53,7 +52,7 @@ namespace PureForm.Infrastructure.Data
                     .OnDelete(DeleteBehavior.Cascade);
             });
 
-            // Exercise configuration
+
             modelBuilder.Entity<Exercise>(entity =>
             {
                 entity.HasKey(e => e.Id);
@@ -64,7 +63,7 @@ namespace PureForm.Infrastructure.Data
                     .OnDelete(DeleteBehavior.Cascade);
             });
 
-            // NutritionLog configuration
+
             modelBuilder.Entity<NutritionLog>(entity =>
             {
                 entity.HasKey(e => e.Id);
@@ -80,7 +79,7 @@ namespace PureForm.Infrastructure.Data
                     .OnDelete(DeleteBehavior.Cascade);
             });
 
-            // StripeSubscription configuration
+
             modelBuilder.Entity<StripeSubscription>(entity =>
             {
                 entity.HasKey(e => e.Id);

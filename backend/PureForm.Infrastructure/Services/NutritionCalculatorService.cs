@@ -19,7 +19,6 @@ public class NutritionCalculatorService : INutritionCalculatorService
         var user = await _userRepository.GetByIdAsync(userId);
         if (user == null) throw new Exception("User not found");
 
-        // Calculate age
         var age = DateTime.UtcNow.Year - user.DateOfBirth.Year;
         if (DateTime.UtcNow.DayOfYear < user.DateOfBirth.DayOfYear) age--;
 
@@ -34,8 +33,7 @@ public class NutritionCalculatorService : INutritionCalculatorService
             bmr = (10 * user.Weight) + (6.25m * user.Height) - (5 * age) - 161;
         }
 
-        // Calculate TDEE (assuming moderate activity level - 1.55 multiplier)
-        // You can make this customizable based on user activity level
+
         decimal tdee = bmr * 1.55m;
 
         // Adjust based on fitness goal
@@ -75,15 +73,15 @@ public class NutritionCalculatorService : INutritionCalculatorService
                 break;
         }
 
-        // Calculate macros
+
         decimal proteinGrams = user.Weight * proteinMultiplier; // grams per kg body weight
         decimal proteinCalories = proteinGrams * 4; // 4 calories per gram
 
-        // Fats: 25-30% of total calories
+
         decimal fatCalories = recommendedCalories * 0.28m;
         decimal fatGrams = fatCalories / 9; // 9 calories per gram
 
-        // Carbs: remaining calories
+
         decimal carbCalories = recommendedCalories - proteinCalories - fatCalories;
         decimal carbGrams = carbCalories / 4; // 4 calories per gram
 

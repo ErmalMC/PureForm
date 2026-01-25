@@ -1,7 +1,4 @@
-﻿// ============================================================
-// PureForm.WebAPI/Controllers/NutritionController.cs
-// ============================================================
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using PureForm.Application.DTOs;
 using PureForm.Application.Interfaces;
 

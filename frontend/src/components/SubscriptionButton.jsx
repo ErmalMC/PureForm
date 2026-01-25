@@ -1,4 +1,3 @@
-// src/components/SubscriptionButton.jsx
 import { useState } from 'react';
 
 function SubscriptionButton({ userId }) {
@@ -17,7 +16,7 @@ function SubscriptionButton({ userId }) {
             });
 
             const { url } = await response.json();
-            window.location.href = url; // Redirect to Stripe checkout
+            window.location.href = url;
         } catch (error) {
             console.error('Error:', error);
             alert('Failed to start checkout');

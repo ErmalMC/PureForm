@@ -1,7 +1,4 @@
-﻿// ============================================================
-// PureForm.Domain/Entities/User.cs - UPDATED
-// ============================================================
-namespace PureForm.Domain.Entities;
+﻿namespace PureForm.Domain.Entities;
 
 public class User
 {
@@ -16,8 +13,6 @@ public class User
     public string Gender { get; set; } = string.Empty;
     public string FitnessGoal { get; set; } = string.Empty;
     public bool IsPremium { get; set; }
-
-    // NEW: Nutrition Goals
     public decimal? DailyCalorieGoal { get; set; }
     public decimal? DailyProteinGoal { get; set; }
     public decimal? DailyCarbsGoal { get; set; }
@@ -26,7 +21,6 @@ public class User
     public DateTime CreatedAt { get; set; }
     public DateTime? UpdatedAt { get; set; }
 
-    // Navigation properties
     public ICollection<WorkoutPlan> WorkoutPlans { get; set; } = new List<WorkoutPlan>();
     public ICollection<NutritionLog> NutritionLogs { get; set; } = new List<NutritionLog>();
 }
