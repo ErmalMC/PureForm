@@ -10,17 +10,11 @@ const Upgrade = () => {
     const handleUpgrade = async () => {
         try {
             const response = await api.post('/stripe/create-checkout-session', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    userId: user.id,
-                    priceId: 'price_1Sss8sDlMwMJ1RUdfPnx4pT9'
-                })
+                userId: user.id,
+                priceId: 'price_1Sss8sDlMwMJ1RUdfPnx4pT9'
             });
 
-            const { url } = await response.json();
+            const { url } = response.data;
             window.location.href = url;
         } catch (error) {
             console.error('Error:', error);
