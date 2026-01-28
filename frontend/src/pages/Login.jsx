@@ -114,7 +114,7 @@ const Login = () => {
 
                 {/* Footer */}
                 <p className="text-center text-gray-500 text-sm mt-8">
-                    © 2025 PureForm. All rights reserved.
+                    © 2026 PureForm. All rights reserved.
                 </p>
             </div>
         </div>
