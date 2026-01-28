@@ -31,7 +31,7 @@ A modern full-stack fitness and nutrition tracking platform built with .NET 8 an
 ## 🚀 Quick Start
 
 ### Prerequisites
-Node.js 18+, .NET 8 SDK, MySQL 8.0+
+Node.js 18+, .NET 9 SDK, MySQL 8.0+
 
 ### Backend
 ```bash
