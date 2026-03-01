@@ -1,0 +1,12 @@
+/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.Domain/bin/Release/net9.0/PureForm.Domain.deps.json
+/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.Domain/bin/Release/net9.0/PureForm.Domain.dll
+/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.Domain/bin/Release/net9.0/PureForm.Domain.pdb
+/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.Domain/obj/Release/net9.0/PureForm.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.Domain/obj/Release/net9.0/PureForm.Domain.AssemblyInfoInputs.cache
+/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.Domain/obj/Release/net9.0/PureForm.Domain.AssemblyInfo.cs
+/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.Domain/obj/Release/net9.0/PureForm.Domain.csproj.CoreCompileInputs.cache
+/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.Domain/obj/Release/net9.0/PureForm.Domain.sourcelink.json
+/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.Domain/obj/Release/net9.0/PureForm.Domain.dll
+/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.Domain/obj/Release/net9.0/refint/PureForm.Domain.dll
+/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.Domain/obj/Release/net9.0/PureForm.Domain.pdb
+/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.Domain/obj/Release/net9.0/ref/PureForm.Domain.dll

@@ -10,7 +10,7 @@
         "projectUniqueName": "/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.Application/PureForm.Application.csproj",
         "projectName": "PureForm.Application",
         "projectPath": "/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.Application/PureForm.Application.csproj",
-        "packagesPath": "/home/ermalmc/.nuget/packages/",
+        "packagesPath": "/home/ermalmc/.nuget/packages",
         "outputPath": "/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.Application/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
@@ -73,7 +73,7 @@
         "projectUniqueName": "/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.Domain/PureForm.Domain.csproj",
         "projectName": "PureForm.Domain",
         "projectPath": "/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.Domain/PureForm.Domain.csproj",
-        "packagesPath": "/home/ermalmc/.nuget/packages/",
+        "packagesPath": "/home/ermalmc/.nuget/packages",
         "outputPath": "/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PureForm.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c68962261ea8893922eacb6a1b4088856a99b159")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f3649add669c0b9ce03030335082dfb97c622d33")]
 [assembly: System.Reflection.AssemblyProductAttribute("PureForm.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PureForm.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

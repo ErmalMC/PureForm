@@ -3911,7 +3911,7 @@
     ]
   },
   "packageFolders": {
-    "/home/ermalmc/.nuget/packages/": {}
+    "/home/ermalmc/.nuget/packages": {}
   },
   "project": {
     "version": "1.0.0",
@@ -3919,10 +3919,11 @@
       "projectUniqueName": "/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.WebAPI/PureForm.WebAPI.csproj",
       "projectName": "PureForm.WebAPI",
       "projectPath": "/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.WebAPI/PureForm.WebAPI.csproj",
-      "packagesPath": "/home/ermalmc/.nuget/packages/",
+      "packagesPath": "/home/ermalmc/.nuget/packages",
       "outputPath": "/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.WebAPI/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
+        "/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.WebAPI/nuget.config",
         "/home/ermalmc/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [

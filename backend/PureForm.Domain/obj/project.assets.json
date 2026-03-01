@@ -8,7 +8,7 @@
     "net9.0": []
   },
   "packageFolders": {
-    "/home/ermalmc/.nuget/packages/": {}
+    "/home/ermalmc/.nuget/packages": {}
   },
   "project": {
     "version": "1.0.0",
@@ -16,7 +16,7 @@
       "projectUniqueName": "/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.Domain/PureForm.Domain.csproj",
       "projectName": "PureForm.Domain",
       "projectPath": "/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.Domain/PureForm.Domain.csproj",
-      "packagesPath": "/home/ermalmc/.nuget/packages/",
+      "packagesPath": "/home/ermalmc/.nuget/packages",
       "outputPath": "/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.Domain/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [

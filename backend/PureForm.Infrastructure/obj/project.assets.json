@@ -3316,7 +3316,7 @@
     ]
   },
   "packageFolders": {
-    "/home/ermalmc/.nuget/packages/": {}
+    "/home/ermalmc/.nuget/packages": {}
   },
   "project": {
     "version": "1.0.0",
@@ -3324,7 +3324,7 @@
       "projectUniqueName": "/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.Infrastructure/PureForm.Infrastructure.csproj",
       "projectName": "PureForm.Infrastructure",
       "projectPath": "/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.Infrastructure/PureForm.Infrastructure.csproj",
-      "packagesPath": "/home/ermalmc/.nuget/packages/",
+      "packagesPath": "/home/ermalmc/.nuget/packages",
       "outputPath": "/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.Infrastructure/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [

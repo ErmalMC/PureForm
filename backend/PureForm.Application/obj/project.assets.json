@@ -27,7 +27,7 @@
     ]
   },
   "packageFolders": {
-    "/home/ermalmc/.nuget/packages/": {}
+    "/home/ermalmc/.nuget/packages": {}
   },
   "project": {
     "version": "1.0.0",
@@ -35,7 +35,7 @@
       "projectUniqueName": "/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.Application/PureForm.Application.csproj",
       "projectName": "PureForm.Application",
       "projectPath": "/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.Application/PureForm.Application.csproj",
-      "packagesPath": "/home/ermalmc/.nuget/packages/",
+      "packagesPath": "/home/ermalmc/.nuget/packages",
       "outputPath": "/home/ermalmc/Programs/Coding/Project_Files/PureForm/backend/PureForm.Application/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
