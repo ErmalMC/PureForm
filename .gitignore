@@ -1,6 +1,94 @@
+# Environment & Configuration
 backend/PureForm.WebAPI/appsettings.json
-backend/PureForm.WebAPI/appsettings.json
-backend/PureForm.WebAPI/bin/Debug/net9.0/appsettings.json
-backend/PureForm.WebAPI/bin/Debug/net9.0/appsettings.json
-backend/PureForm.WebAPI/bin/Debug/net9.0/appsettings.json
-backend/PureForm.WebAPI/appsettings.json
+backend/PureForm.WebAPI/appsettings.Development.json
+backend/PureForm.WebAPI/appsettings.Production.json
+
+# IDEs
+.vscode/
+.vs/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.user
+*.suo
+*.sln.iml
+
+# Build outputs
+bin/
+obj/
+.next/
+dist/
+build/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE-specific files
+*.swp
+*.swo
+.idea/
+.vscode/settings.json
+.vscode/launch.json
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Build artifacts - C#/.NET
+**/bin/
+**/obj/
+**/.vs/
+*.csproj.user
+*.csproj.nuget.dgspec.json
+*.csproj.nuget.g.props
+*.csproj.nuget.g.targets
+*.nuget.props
+*.nuget.targets
+
+# Node/Frontend
+node_modules/
+dist/
+.vite/
+.parcel-cache/
+.husky/
+
+# Testing
+coverage/
+.nyc_output/
+
+# Rider files
+**/.idea/
+**/*.sln.iml
+**/rider.project.model.nuget.info
+**/rider.project.restore.info
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Miscellaneous
+.turbo/
+*.pem
+.env*.local
