@@ -75,7 +75,7 @@ namespace PureForm.Infrastructure.Migrations
 
                     b.HasIndex("WorkoutPlanId");
 
-                    b.ToTable("Exercises");
+                    b.ToTable("Exercises", (string)null);
                 });
 
             modelBuilder.Entity("PureForm.Domain.Entities.FoodItem", b =>
@@ -120,7 +120,7 @@ namespace PureForm.Infrastructure.Migrations
 
                     b.HasIndex("Name");
 
-                    b.ToTable("FoodItems");
+                    b.ToTable("FoodItems", (string)null);
                 });
 
             modelBuilder.Entity("PureForm.Domain.Entities.NutritionLog", b =>
@@ -177,7 +177,7 @@ namespace PureForm.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("NutritionLogs");
+                    b.ToTable("NutritionLogs", (string)null);
                 });
 
             modelBuilder.Entity("PureForm.Domain.Entities.StripeSubscription", b =>
@@ -223,7 +223,7 @@ namespace PureForm.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("StripeSubscriptions");
+                    b.ToTable("StripeSubscriptions", (string)null);
                 });
 
             modelBuilder.Entity("PureForm.Domain.Entities.User", b =>
@@ -302,7 +302,7 @@ namespace PureForm.Infrastructure.Migrations
                     b.HasIndex("Email")
                         .IsUnique();
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("PureForm.Domain.Entities.WorkoutPlan", b =>
@@ -342,7 +342,7 @@ namespace PureForm.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("WorkoutPlans");
+                    b.ToTable("WorkoutPlans", (string)null);
                 });
 
             modelBuilder.Entity("PureForm.Domain.Entities.Exercise", b =>

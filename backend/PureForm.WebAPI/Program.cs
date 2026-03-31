@@ -6,6 +6,7 @@ using PureForm.Infrastructure.Data;
 using PureForm.Infrastructure.Repositories;
 using PureForm.Infrastructure.Services;
 using PureForm.Application.Interfaces;
+using PureForm.WebAPI.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +30,11 @@ if (!string.IsNullOrEmpty(Environment.GetEnvironmentVariable("MYSQLHOST")))
                       $"Database={Environment.GetEnvironmentVariable("MYSQLDATABASE")};" +
                       $"User={Environment.GetEnvironmentVariable("MYSQLUSER")};" +
                       $"Password={Environment.GetEnvironmentVariable("MYSQLPASSWORD")};";
+}
+
+if (string.IsNullOrWhiteSpace(connectionString))
+{
+    throw new InvalidOperationException("Database connection string not configured.");
 }
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -58,6 +64,16 @@ var jwtIssuer = Environment.GetEnvironmentVariable("JWT_ISSUER")
 var jwtAudience = Environment.GetEnvironmentVariable("JWT_AUDIENCE")
                   ?? builder.Configuration["Jwt:Audience"];
 
+if (string.IsNullOrWhiteSpace(jwtIssuer))
+{
+    throw new InvalidOperationException("JWT Issuer not configured");
+}
+
+if (string.IsNullOrWhiteSpace(jwtAudience))
+{
+    throw new InvalidOperationException("JWT Audience not configured");
+}
+
 var key = Encoding.ASCII.GetBytes(jwtKey);
 
 builder.Services.AddAuthentication(options =>
@@ -67,7 +83,7 @@ builder.Services.AddAuthentication(options =>
 })
 .AddJwtBearer(options =>
 {
-    options.RequireHttpsMetadata = false;
+    options.RequireHttpsMetadata = !builder.Environment.IsDevelopment();
     options.SaveToken = true;
     options.TokenValidationParameters = new TokenValidationParameters
     {
@@ -75,6 +91,7 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(key),
         ValidateIssuer = true,
         ValidateAudience = true,
+        ValidateLifetime = true,
         ValidIssuer = jwtIssuer,
         ValidAudience = jwtAudience,
         ClockSkew = TimeSpan.Zero
@@ -117,6 +134,9 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+
+// Add exception handling middleware early in the pipeline
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 // Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())

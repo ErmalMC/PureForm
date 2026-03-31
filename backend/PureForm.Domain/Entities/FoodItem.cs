@@ -1,15 +1,15 @@
-﻿namespace PureForm.Domain.Entities;
+﻿using PureForm.Domain.Common;
+using PureForm.Domain.Enums;
 
-public class FoodItem
+namespace PureForm.Domain.Entities;
+
+public class FoodItem : BaseEntity
 {
-    public int Id { get; set; }
     public string Name { get; set; } = string.Empty;
-    public string Category { get; set; } = string.Empty;
+    public FoodCategory Category { get; set; }
     public decimal CaloriesPer100g { get; set; }
     public decimal ProteinPer100g { get; set; }
     public decimal CarbsPer100g { get; set; }
     public decimal FatsPer100g { get; set; }
     public string DefaultUnit { get; set; } = "g";
-    public DateTime CreatedAt { get; set; }
-    
 }

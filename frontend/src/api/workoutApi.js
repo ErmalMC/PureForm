@@ -27,7 +27,7 @@ export const workoutApi = {
     },
 
     generatePersonalized: async (userId, difficultyLevel = 'Intermediate') => {
-        const response = await api.post(`/workoutplans/user/${userId}/generate?difficultyLevel=${difficultyLevel}`);
+        const response = await api.post(`/workoutplans/user/${userId}/generate?difficultyLevel=${difficultyLevel}`, {});
         return response.data;
     }
 };

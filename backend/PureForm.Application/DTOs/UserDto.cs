@@ -9,7 +9,9 @@ public class UserDto
     public DateTime DateOfBirth { get; set; }
     public decimal Weight { get; set; }
     public decimal Height { get; set; }
+    /// <summary>String representation of Gender enum for API serialization</summary>
     public string Gender { get; set; } = string.Empty;
+    /// <summary>String representation of FitnessGoal enum for API serialization</summary>
     public string FitnessGoal { get; set; } = string.Empty;
     public bool IsPremium { get; set; }
     public decimal? DailyCalorieGoal { get; set; }
@@ -27,7 +29,9 @@ public class CreateUserDto
     public DateTime DateOfBirth { get; set; }
     public decimal Weight { get; set; }
     public decimal Height { get; set; }
+    /// <summary>String representation of Gender enum</summary>
     public string Gender { get; set; } = string.Empty;
+    /// <summary>String representation of FitnessGoal enum</summary>
     public string FitnessGoal { get; set; } = string.Empty;
 }
 
@@ -37,6 +41,7 @@ public class UpdateUserDto
     public string? LastName { get; set; }
     public decimal? Weight { get; set; }
     public decimal? Height { get; set; }
+    /// <summary>String representation of FitnessGoal enum</summary>
     public string? FitnessGoal { get; set; }
     public decimal? DailyCalorieGoal { get; set; }
     public decimal? DailyProteinGoal { get; set; }

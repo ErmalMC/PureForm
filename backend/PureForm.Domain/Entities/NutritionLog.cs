@@ -1,25 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PureForm.Domain.Common;
+using PureForm.Domain.Enums;
 
-namespace PureForm.Domain.Entities
+namespace PureForm.Domain.Entities;
+
+public class NutritionLog : BaseEntity
 {
-    public class NutritionLog
-    {
-        public int Id { get; set; }
-        public int UserId { get; set; }
-        public DateTime LogDate { get; set; }
-        public string MealType { get; set; } = string.Empty; // Breakfast, Lunch, Dinner, Snack
-        public string FoodName { get; set; } = string.Empty;
-        public decimal Calories { get; set; }
-        public decimal Protein { get; set; }
-        public decimal Carbs { get; set; }
-        public decimal Fats { get; set; }
-        public decimal ServingSize { get; set; }
-        public string ServingUnit { get; set; } = string.Empty;
-        public DateTime CreatedAt { get; set; }
-        public User User { get; set; } = null!;
-    }
+    public int UserId { get; set; }
+    public DateTime LogDate { get; set; }
+    public MealType MealType { get; set; }
+    public string FoodName { get; set; } = string.Empty;
+    public decimal Calories { get; set; }
+    public decimal Protein { get; set; }
+    public decimal Carbs { get; set; }
+    public decimal Fats { get; set; }
+    public decimal ServingSize { get; set; }
+    public string ServingUnit { get; set; } = string.Empty;
+
+    public User User { get; set; } = null!;
 }

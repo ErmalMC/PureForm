@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { workoutApi } from '../api/workoutApi';
 import Navbar from '../components/Navbar';
@@ -8,8 +8,8 @@ const WorkoutPlans = () => {
     const [workoutPlans, setWorkoutPlans] = useState([]);
     const [loading, setLoading] = useState(true);
     const [showCreateModal, setShowCreateModal] = useState(false);
-    const [showGenerateModal, setShowGenerateModal] = useState(false); // NEW
-    const [selectedDifficulty, setSelectedDifficulty] = useState('Intermediate'); // NEW
+    const [showGenerateModal, setShowGenerateModal] = useState(false);
+    const [selectedDifficulty, setSelectedDifficulty] = useState('Intermediate');
     const [selectedPlan, setSelectedPlan] = useState(null);
     const [formData, setFormData] = useState({
         name: '',
@@ -18,11 +18,7 @@ const WorkoutPlans = () => {
         durationWeeks: 4
     });
 
-    useEffect(() => {
-        fetchWorkoutPlans();
-    }, []);
-
-    const fetchWorkoutPlans = async () => {
+    const fetchWorkoutPlans = useCallback(async () => {
         try {
             const plans = await workoutApi.getByUserId(user.id);
             setWorkoutPlans(plans);
@@ -31,7 +27,11 @@ const WorkoutPlans = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }, [user.id]);
+
+    useEffect(() => {
+        fetchWorkoutPlans();
+    }, [fetchWorkoutPlans]);
 
     const handleCreatePlan = async (e) => {
         e.preventDefault();

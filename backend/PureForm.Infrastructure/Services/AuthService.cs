@@ -1,35 +1,29 @@
-﻿using PureForm.Application.DTOs;
+using PureForm.Application.DTOs;
 using PureForm.Application.Interfaces;
+using PureForm.Application.Utilities;
 using PureForm.Domain.Entities;
+using PureForm.Domain.Enums;
 using PureForm.Infrastructure.Repositories;
-
 namespace PureForm.Infrastructure.Services;
-
 public class AuthService : IAuthService
 {
     private readonly IRepository<User> _userRepository;
     private readonly IJwtService _jwtService;
-
     public AuthService(IRepository<User> userRepository, IJwtService jwtService)
     {
         _userRepository = userRepository;
         _jwtService = jwtService;
     }
-
     public async Task<AuthResponseDto?> LoginAsync(LoginDto dto)
     {
         var users = await _userRepository.FindAsync(u => u.Email == dto.Email);
         var user = users.FirstOrDefault();
-
         if (user == null)
             return null;
-
         if (!BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))
             return null;
-
         var token = _jwtService.GenerateToken(user);
         var expiryMinutes = 1440;
-
         return new AuthResponseDto
         {
             Token = token,
@@ -37,9 +31,10 @@ public class AuthService : IAuthService
             ExpiresAt = DateTime.UtcNow.AddMinutes(expiryMinutes)
         };
     }
-
     public async Task<AuthResponseDto> RegisterAsync(RegisterDto dto)
     {
+        var genderEnum = EnumConverter.ParseGender(dto.Gender) ?? Gender.Other;
+        var fitnessGoalEnum = EnumConverter.ParseFitnessGoal(dto.FitnessGoal) ?? FitnessGoal.GeneralFitness;
         var user = new User
         {
             Email = dto.Email,
@@ -49,16 +44,14 @@ public class AuthService : IAuthService
             DateOfBirth = dto.DateOfBirth,
             Weight = dto.Weight,
             Height = dto.Height,
-            Gender = dto.Gender,
-            FitnessGoal = dto.FitnessGoal,
+            Gender = genderEnum,
+            FitnessGoal = fitnessGoalEnum,
             IsPremium = false,
             CreatedAt = DateTime.UtcNow
         };
-
         var created = await _userRepository.AddAsync(user);
         var token = _jwtService.GenerateToken(created);
         var expiryMinutes = 1440;
-
         return new AuthResponseDto
         {
             Token = token,
@@ -66,13 +59,11 @@ public class AuthService : IAuthService
             ExpiresAt = DateTime.UtcNow.AddMinutes(expiryMinutes)
         };
     }
-
     public async Task<bool> UserExistsAsync(string email)
     {
         var users = await _userRepository.FindAsync(u => u.Email == email);
         return users.Any();
     }
-
     private static UserDto MapToUserDto(User user) => new()
     {
         Id = user.Id,
@@ -82,8 +73,8 @@ public class AuthService : IAuthService
         DateOfBirth = user.DateOfBirth,
         Weight = user.Weight,
         Height = user.Height,
-        Gender = user.Gender,
-        FitnessGoal = user.FitnessGoal,
+        Gender = user.Gender.ToString(),
+        FitnessGoal = user.FitnessGoal.ToString(),
         IsPremium = user.IsPremium
     };
 }

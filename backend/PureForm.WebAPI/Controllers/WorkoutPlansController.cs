@@ -30,37 +30,21 @@ namespace PureForm.WebAPI.Controllers
             return Ok(plans);
         }
 
+        [HttpPost("user/{userId}/generate")]
+        public async Task<ActionResult<WorkoutPlanDto>> GeneratePersonalized(
+            int userId,
+            [FromQuery] string? difficultyLevel = null)
+        {
+            var plan = await _workoutPlanService.GeneratePersonalizedPlanAsync(userId, difficultyLevel);
+            if (plan == null) return NotFound("User not found");
+            return Ok(plan);
+        }
+
         [HttpPost("user/{userId}")]
         public async Task<ActionResult<WorkoutPlanDto>> Create(int userId, [FromBody] CreateWorkoutPlanDto dto)
         {
             var plan = await _workoutPlanService.CreateAsync(userId, dto);
             return CreatedAtAction(nameof(GetById), new { id = plan.Id }, plan);
-        }
-
-        [HttpPut("{id}")]
-        public async Task<ActionResult<WorkoutPlanDto>> Update(int id, [FromBody] CreateWorkoutPlanDto dto)
-        {
-            var plan = await _workoutPlanService.UpdateAsync(id, dto);
-            if (plan == null) return NotFound();
-            return Ok(plan);
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
-        {
-            var result = await _workoutPlanService.DeleteAsync(id);
-            if (!result) return NotFound();
-            return NoContent();
-        }
-
-        [HttpPost("user/{userId}/generate")]
-        public async Task<ActionResult<WorkoutPlanDto>> GeneratePersonalized(
-            int userId,
-            [FromQuery] string? difficultyLevel = null)  // ADD THIS PARAMETER
-        {
-            var plan = await _workoutPlanService.GeneratePersonalizedPlanAsync(userId, difficultyLevel);
-            if (plan == null) return NotFound("User not found");
-            return Ok(plan);
         }
     }
 }

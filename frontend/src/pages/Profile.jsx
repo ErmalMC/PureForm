@@ -2,6 +2,11 @@ import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { userApi } from '../api/userApi';
 import Navbar from '../components/Navbar';
+import { motion } from 'framer-motion';
+import toast from 'react-hot-toast';
+import AnimatedInput from '../components/AnimatedInput';
+import AnimatedButton from '../components/AnimatedButton';
+import StatCard from '../components/StatCard';
 
 const Profile = () => {
     const { user } = useAuth();
@@ -43,7 +48,7 @@ const Profile = () => {
             }, 1500);
         } catch (error) {
             console.error('Error updating profile:', error);
-            alert('Failed to update profile');
+            toast.error('Failed to update profile');
         } finally {
             setLoading(false);
         }
@@ -60,11 +65,6 @@ const Profile = () => {
         setIsEditing(false);
     };
 
-    const handleLogout = () => {
-        logout();
-        navigate('/login');
-    };
-
     const calculateBMI = () => {
         const heightInMeters = user.height / 100;
         const bmi = user.weight / (heightInMeters * heightInMeters);
@@ -72,229 +72,314 @@ const Profile = () => {
     };
 
     const getBMICategory = (bmi) => {
-        if (bmi < 18.5) return { text: 'Underweight', color: 'text-blue-600' };
-        if (bmi < 25) return { text: 'Normal', color: 'text-green-600' };
-        if (bmi < 30) return { text: 'Overweight', color: 'text-yellow-600' };
-        return { text: 'Obese', color: 'text-red-600' };
+        if (bmi < 18.5) return { text: 'Underweight', color: 'text-blue-600', bg: 'bg-blue-100' };
+        if (bmi < 25) return { text: 'Normal', color: 'text-green-600', bg: 'bg-green-100' };
+        if (bmi < 30) return { text: 'Overweight', color: 'text-yellow-600', bg: 'bg-yellow-100' };
+        return { text: 'Obese', color: 'text-red-600', bg: 'bg-red-100' };
     };
 
     const bmi = calculateBMI();
     const bmiCategory = getBMICategory(parseFloat(bmi));
 
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.2,
+            },
+        },
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.5, ease: 'easeOut' },
+        },
+    };
+
     return (
-        <div className="min-h-screen bg-gray-100">
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
             {/* Navbar */}
             <Navbar/>
 
             {/* Main Content */}
-            <div className="max-w-5xl mx-auto px-4 py-8">
-                <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+            <motion.div
+                className="max-w-5xl mx-auto px-4 py-8"
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+            >
+                <motion.div className="bg-white rounded-2xl shadow-2xl overflow-hidden" variants={itemVariants}>
                     {/* Header with Gradient */}
-                    <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 px-8 py-16 relative overflow-hidden">
-                        <div className="absolute inset-0 bg-black/10"></div>
+                    <motion.div
+                        className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 px-8 py-16 relative overflow-hidden"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.2 }}
+                    >
+                        <motion.div
+                            className="absolute inset-0 bg-black/10"
+                            animate={{ backgroundPosition: ['0%', '100%'] }}
+                            transition={{ duration: 8, repeat: Infinity }}
+                        />
                         <div className="relative flex items-center justify-between">
-                            <div className="flex items-center gap-6">
-                                <div className="bg-white rounded-full p-1 shadow-2xl flex-shrink-0">
+                            <motion.div
+                                className="flex items-center gap-6"
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.3 }}
+                            >
+                                <motion.div
+                                    className="bg-white rounded-full p-1 shadow-2xl flex-shrink-0"
+                                    animate={{ scale: [1, 1.05, 1] }}
+                                    transition={{ duration: 2, repeat: Infinity }}
+                                >
                                     <div className="bg-gradient-to-br from-blue-100 to-purple-100 rounded-full p-6">
                                         <svg className="w-16 h-16 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                         </svg>
                                     </div>
-                                </div>
-                                <div className="text-white">
+                                </motion.div>
+                                <motion.div className="text-white" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}>
                                     <h2 className="text-4xl font-bold mb-2">{user.firstName} {user.lastName}</h2>
                                     <p className="text-blue-100 text-lg mb-3">{user.email}</p>
-                                    <div className="flex gap-2">
+                                    <motion.div
+                                        className="flex gap-2"
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.5 }}
+                                    >
                                         {user.isPremium ? (
-                                            <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-                        ⭐ Premium Member
-                      </span>
+                                            <motion.span
+                                                className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg"
+                                                animate={{ scale: [1, 1.05, 1] }}
+                                                transition={{ duration: 2, repeat: Infinity }}
+                                            >
+                                                ⭐ Premium Member
+                                            </motion.span>
                                         ) : (
                                             <span className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold">
-                        Free Member
-                      </span>
+                                                Free Member
+                                            </span>
                                         )}
-                                    </div>
-                                </div>
-                            </div>
+                                    </motion.div>
+                                </motion.div>
+                            </motion.div>
                             {!isEditing && (
-                                <button
+                                <AnimatedButton
+                                    variant="primary"
                                     onClick={() => setIsEditing(true)}
-                                    className="bg-white text-blue-600 px-6 py-3 rounded-xl hover:bg-blue-50 font-bold shadow-xl transform hover:scale-105 transition-all flex items-center gap-2"
+                                    className="bg-white text-blue-600 hover:bg-blue-50"
                                 >
-                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                                    </svg>
-                                    Edit Profile
-                                </button>
+                                    ✏️ Edit Profile
+                                </AnimatedButton>
                             )}
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Success Message */}
                     {successMessage && (
-                        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 m-8 rounded">
+                        <motion.div
+                            className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 m-8 rounded flex items-center gap-2"
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                        >
+                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                            </svg>
                             {successMessage}
-                        </div>
+                        </motion.div>
                     )}
 
                     {/* Stats Section */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-8 border-b">
-                        <div className="text-center">
-                            <div className="text-3xl font-bold text-blue-600">{user.weight} kg</div>
-                            <div className="text-gray-600 mt-1">Current Weight</div>
-                        </div>
-                        <div className="text-center">
-                            <div className="text-3xl font-bold text-blue-600">{user.height} cm</div>
-                            <div className="text-gray-600 mt-1">Height</div>
-                        </div>
-                        <div className="text-center">
-                            <div className={`text-3xl font-bold ${bmiCategory.color}`}>{bmi}</div>
-                            <div className="text-gray-600 mt-1">BMI - {bmiCategory.text}</div>
-                        </div>
-                    </div>
+                    <motion.div
+                        className="grid grid-cols-1 md:grid-cols-4 gap-6 p-8 border-b"
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate="visible"
+                    >
+                        <StatCard
+                            title="Weight"
+                            value={`${user.weight} kg`}
+                            color="blue"
+                            delay={0}
+                        />
+                        <StatCard
+                            title="Height"
+                            value={`${user.height} cm`}
+                            color="purple"
+                            delay={0.1}
+                        />
+                        <StatCard
+                            title="BMI"
+                            value={bmi}
+                            color={bmiCategory.text === 'Normal' ? 'green' : bmiCategory.text === 'Underweight' ? 'blue' : bmiCategory.text === 'Overweight' ? 'yellow' : 'red'}
+                            delay={0.2}
+                        />
+                        <motion.div
+                            className={`${bmiCategory.bg} rounded-lg p-4 text-center`}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3 }}
+                        >
+                            <p className="text-sm font-semibold text-gray-600 mb-1">BMI Category</p>
+                            <p className={`text-2xl font-bold ${bmiCategory.color}`}>{bmiCategory.text}</p>
+                        </motion.div>
+                    </motion.div>
 
-                    {/* Profile Form */}
-                    <div className="p-8">
-                        <form onSubmit={handleSubmit}>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label className="block text-gray-700 font-semibold mb-2">First Name</label>
-                                    <input
+                    {/* Edit Form or Info */}
+                    <motion.div
+                        className="p-8"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.4 }}
+                    >
+                        {isEditing ? (
+                            <form onSubmit={handleSubmit} className="space-y-6">
+                                <motion.h3
+                                    className="text-2xl font-bold text-gray-900"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                >
+                                    Edit Your Profile
+                                </motion.h3>
+
+                                <motion.div
+                                    className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+                                    variants={containerVariants}
+                                    initial="hidden"
+                                    animate="visible"
+                                >
+                                    <AnimatedInput
+                                        label="First Name"
                                         type="text"
                                         name="firstName"
                                         value={formData.firstName}
                                         onChange={handleChange}
-                                        disabled={!isEditing}
-                                        className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100"
+                                        required
                                     />
-                                </div>
-
-                                <div>
-                                    <label className="block text-gray-700 font-semibold mb-2">Last Name</label>
-                                    <input
+                                    <AnimatedInput
+                                        label="Last Name"
                                         type="text"
                                         name="lastName"
                                         value={formData.lastName}
                                         onChange={handleChange}
-                                        disabled={!isEditing}
-                                        className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100"
+                                        required
                                     />
-                                </div>
-
-                                <div>
-                                    <label className="block text-gray-700 font-semibold mb-2">Email</label>
-                                    <input
-                                        type="email"
-                                        value={user.email}
-                                        disabled
-                                        className="w-full px-4 py-2 border rounded-lg bg-gray-100"
-                                    />
-                                    <p className="text-sm text-gray-500 mt-1">Email cannot be changed</p>
-                                </div>
-
-                                <div>
-                                    <label className="block text-gray-700 font-semibold mb-2">Date of Birth</label>
-                                    <input
-                                        type="text"
-                                        value={new Date(user.dateOfBirth).toLocaleDateString()}
-                                        disabled
-                                        className="w-full px-4 py-2 border rounded-lg bg-gray-100"
-                                    />
-                                </div>
-
-                                <div>
-                                    <label className="block text-gray-700 font-semibold mb-2">Weight (kg)</label>
-                                    <input
+                                    <AnimatedInput
+                                        label="Weight (kg)"
                                         type="number"
                                         step="0.1"
                                         name="weight"
                                         value={formData.weight}
                                         onChange={handleChange}
-                                        disabled={!isEditing}
-                                        className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100"
+                                        required
                                     />
-                                </div>
-
-                                <div>
-                                    <label className="block text-gray-700 font-semibold mb-2">Height (cm)</label>
-                                    <input
+                                    <AnimatedInput
+                                        label="Height (cm)"
                                         type="number"
                                         step="0.1"
                                         name="height"
                                         value={formData.height}
                                         onChange={handleChange}
-                                        disabled={!isEditing}
-                                        className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100"
+                                        required
                                     />
-                                </div>
+                                </motion.div>
 
-                                <div>
-                                    <label className="block text-gray-700 font-semibold mb-2">Gender</label>
-                                    <input
-                                        type="text"
-                                        value={user.gender}
-                                        disabled
-                                        className="w-full px-4 py-2 border rounded-lg bg-gray-100"
-                                    />
-                                </div>
-
-                                <div>
-                                    <label className="block text-gray-700 font-semibold mb-2">Fitness Goal</label>
+                                <motion.div variants={itemVariants}>
+                                    <label className="block text-sm font-semibold text-gray-700 mb-2">Fitness Goal</label>
                                     <select
                                         name="fitnessGoal"
                                         value={formData.fitnessGoal}
                                         onChange={handleChange}
-                                        disabled={!isEditing}
-                                        className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100"
+                                        className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-0 focus:border-blue-500 transition-all"
                                     >
-                                        <option value="Weight Loss">Weight Loss</option>
-                                        <option value="Muscle Gain">Muscle Gain</option>
-                                        <option value="General Fitness">General Fitness</option>
-                                        <option value="Endurance">Endurance</option>
+                                        <option value="WeightLoss">🔥 Weight Loss</option>
+                                        <option value="MuscleGain">💪 Muscle Gain</option>
+                                        <option value="GeneralFitness">⚡ General Fitness</option>
+                                        <option value="Endurance">🏃 Endurance</option>
                                     </select>
-                                </div>
-                            </div>
+                                </motion.div>
 
-                            {isEditing && (
-                                <div className="flex gap-4 mt-8">
-                                    <button
+                                <motion.div
+                                    className="flex gap-4"
+                                    variants={itemVariants}
+                                >
+                                    <AnimatedButton
                                         type="button"
+                                        variant="secondary"
                                         onClick={handleCancel}
-                                        className="flex-1 bg-gray-300 text-gray-700 py-3 rounded-lg hover:bg-gray-400 font-semibold"
+                                        className="flex-1 justify-center"
                                     >
                                         Cancel
-                                    </button>
-                                    <button
+                                    </AnimatedButton>
+                                    <AnimatedButton
                                         type="submit"
+                                        variant="primary"
                                         disabled={loading}
-                                        className="flex-1 bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 disabled:bg-gray-400 font-semibold"
+                                        className="flex-1 justify-center"
                                     >
                                         {loading ? 'Saving...' : 'Save Changes'}
-                                    </button>
-                                </div>
-                            )}
-                        </form>
-                    </div>
+                                    </AnimatedButton>
+                                </motion.div>
+                            </form>
+                        ) : (
+                            <motion.div className="space-y-6" variants={containerVariants} initial="hidden" animate="visible">
+                                <motion.h3 className="text-2xl font-bold text-gray-900" variants={itemVariants}>
+                                    Profile Information
+                                </motion.h3>
 
-                    {/* Account Info */}
-                    <div className="bg-gray-50 p-8 border-t">
-                        <h3 className="text-lg font-bold mb-4">Account Information</h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                            <div>
-                                <span className="text-gray-600">Member Since:</span>
-                                <span className="ml-2 font-semibold">{new Date(user.createdAt || Date.now()).toLocaleDateString()}</span>
-                            </div>
-                            <div>
-                                <span className="text-gray-600">Account Status:</span>
-                                <span className="ml-2 font-semibold">{user.isPremium ? 'Premium' : 'Free'}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-6" variants={containerVariants} initial="hidden" animate="visible">
+                                    <motion.div
+                                        className="bg-gray-50 rounded-lg p-6"
+                                        variants={itemVariants}
+                                        whileHover={{ boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}
+                                    >
+                                        <p className="text-sm font-semibold text-gray-600 mb-2">First Name</p>
+                                        <p className="text-2xl font-bold text-gray-900">{user.firstName}</p>
+                                    </motion.div>
+
+                                    <motion.div
+                                        className="bg-gray-50 rounded-lg p-6"
+                                        variants={itemVariants}
+                                        whileHover={{ boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}
+                                    >
+                                        <p className="text-sm font-semibold text-gray-600 mb-2">Last Name</p>
+                                        <p className="text-2xl font-bold text-gray-900">{user.lastName}</p>
+                                    </motion.div>
+
+                                    <motion.div
+                                        className="bg-gray-50 rounded-lg p-6"
+                                        variants={itemVariants}
+                                        whileHover={{ boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}
+                                    >
+                                        <p className="text-sm font-semibold text-gray-600 mb-2">Fitness Goal</p>
+                                        <p className="text-2xl font-bold text-gray-900">{user.fitnessGoal}</p>
+                                    </motion.div>
+
+                                    <motion.div
+                                        className="bg-gray-50 rounded-lg p-6"
+                                        variants={itemVariants}
+                                        whileHover={{ boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}
+                                    >
+                                        <p className="text-sm font-semibold text-gray-600 mb-2">Member Since</p>
+                                        <p className="text-2xl font-bold text-gray-900">
+                                            {new Date(user.createdAt || Date.now()).toLocaleDateString()}
+                                        </p>
+                                    </motion.div>
+                                </motion.div>
+                            </motion.div>
+                        )}
+                    </motion.div>
+                </motion.div>
+            </motion.div>
         </div>
     );
 };
 
 export default Profile;
+

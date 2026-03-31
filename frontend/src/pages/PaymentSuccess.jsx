@@ -9,8 +9,6 @@ const PaymentSuccess = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const sessionId = searchParams.get('session_id');
-
         const timer = setTimeout(async () => {
             if (refreshUser) {
                 await refreshUser();
@@ -19,7 +17,7 @@ const PaymentSuccess = () => {
         }, 3000);
 
         return () => clearTimeout(timer);
-    }, [searchParams, refreshUser]);
+    }, [refreshUser]);
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 flex items-center justify-center px-4">

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { nutritionApi } from '../api/nutritionApi';
 import { foodApi } from '../api/foodApi';

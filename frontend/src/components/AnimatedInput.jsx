@@ -56,6 +56,7 @@ const AnimatedInput = ({
                     onFocus={() => setIsFocused(true)}
                     placeholder={placeholder}
                     disabled={disabled}
+                    autoComplete="off"
                     className={`w-full px-4 py-3 ${Icon ? 'pl-12' : ''} bg-gray-50 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-0 focus:border-blue-500 focus:bg-white transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed ${className} ${
                         error ? 'border-red-500 focus:border-red-500' : ''
                     }`}

@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { motion, AnimatePresence } from 'framer-motion';
+import toast from 'react-hot-toast';
+import AnimatedInput from '../components/AnimatedInput';
+import AnimatedButton from '../components/AnimatedButton';
 
 const Register = () => {
     const [step, setStep] = useState(1);
@@ -13,7 +17,7 @@ const Register = () => {
         weight: '',
         height: '',
         gender: 'Male',
-        fitnessGoal: 'Muscle Gain'
+        fitnessGoal: 'MuscleGain'
     });
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
@@ -31,6 +35,7 @@ const Register = () => {
     const handleNext = () => {
         if (step === 1 && (!formData.email || !formData.password || !formData.firstName || !formData.lastName)) {
             setError('Please fill in all fields');
+            toast.error('Please fill in all fields');
             return;
         }
         setError('');
@@ -46,6 +51,7 @@ const Register = () => {
         e.preventDefault();
         setError('');
         setLoading(true);
+        toast.loading('Creating your account...');
 
         const userData = {
             ...formData,
@@ -56,226 +62,312 @@ const Register = () => {
         const result = await register(userData);
 
         if (result.success) {
+            toast.dismiss();
+            toast.success('Account created successfully! Welcome to PureForm!');
             navigate('/dashboard');
         } else {
             setError(result.error);
+            toast.dismiss();
+            toast.error(result.error);
         }
 
         setLoading(false);
     };
 
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.2,
+            },
+        },
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.5, ease: 'easeOut' },
+        },
+    };
+
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center p-4">
-            <div className="w-full max-w-2xl">
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center p-4 relative overflow-hidden">
+            {/* Animated background elements */}
+            <motion.div
+                className="absolute top-0 left-0 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
+                animate={{ y: [0, -50, 0] }}
+                transition={{ duration: 8, repeat: Infinity }}
+            />
+            <motion.div
+                className="absolute bottom-0 right-0 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
+                animate={{ y: [0, 50, 0] }}
+                transition={{ duration: 8, repeat: Infinity, delay: 1 }}
+            />
+
+            <motion.div
+                className="w-full max-w-2xl relative z-10"
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+            >
                 {/* Logo/Brand */}
-                <div className="text-center mb-8">
-                    <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl mb-4 shadow-lg">
+                <motion.div className="text-center mb-8" variants={itemVariants}>
+                    <motion.div
+                        className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl mb-4 shadow-lg"
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                    >
                         <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
-                    </div>
-                    <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    </motion.div>
+                    <motion.h1
+                        className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+                        initial={{ scale: 0.9 }}
+                        animate={{ scale: 1 }}
+                        transition={{ duration: 0.5 }}
+                    >
                         Join PureForm
-                    </h1>
-                    <p className="text-gray-600 mt-2">Start your transformation today</p>
-                </div>
+                    </motion.h1>
+                    <motion.p
+                        className="text-gray-600 mt-2"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.2 }}
+                    >
+                        Start your transformation today
+                    </motion.p>
+                </motion.div>
 
                 {/* Progress Indicator */}
-                <div className="mb-8">
+                <motion.div className="mb-8" variants={itemVariants}>
                     <div className="flex items-center justify-center">
-                        <div className={`flex items-center ${step >= 1 ? 'text-blue-600' : 'text-gray-400'}`}>
-                            <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${step >= 1 ? 'bg-blue-600 text-white' : 'bg-gray-300'}`}>
+                        <motion.div
+                            className={`flex items-center ${step >= 1 ? 'text-blue-600' : 'text-gray-400'}`}
+                            animate={step >= 1 ? { scale: 1.1 } : { scale: 1 }}
+                        >
+                            <motion.div
+                                className={`w-10 h-10 rounded-full flex items-center justify-center font-bold transition-all ${step >= 1 ? 'bg-blue-600 text-white shadow-lg' : 'bg-gray-300'}`}
+                                animate={step >= 1 ? { scale: 1 } : { scale: 1 }}
+                            >
                                 1
-                            </div>
+                            </motion.div>
                             <span className="ml-2 font-semibold hidden sm:inline">Account</span>
-                        </div>
-                        <div className={`w-16 h-1 mx-4 ${step >= 2 ? 'bg-blue-600' : 'bg-gray-300'}`}></div>
-                        <div className={`flex items-center ${step >= 2 ? 'text-blue-600' : 'text-gray-400'}`}>
-                            <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${step >= 2 ? 'bg-blue-600 text-white' : 'bg-gray-300'}`}>
+                        </motion.div>
+                        <motion.div
+                            className={`w-16 h-1 mx-4 transition-all ${step >= 2 ? 'bg-blue-600' : 'bg-gray-300'}`}
+                            animate={step >= 2 ? { width: 100 } : { width: 60 }}
+                        />
+                        <motion.div
+                            className={`flex items-center ${step >= 2 ? 'text-blue-600' : 'text-gray-400'}`}
+                            animate={step >= 2 ? { scale: 1.1 } : { scale: 1 }}
+                        >
+                            <motion.div
+                                className={`w-10 h-10 rounded-full flex items-center justify-center font-bold transition-all ${step >= 2 ? 'bg-blue-600 text-white shadow-lg' : 'bg-gray-300'}`}
+                            >
                                 2
-                            </div>
+                            </motion.div>
                             <span className="ml-2 font-semibold hidden sm:inline">Profile</span>
-                        </div>
+                        </motion.div>
                     </div>
-                </div>
+                </motion.div>
 
                 {/* Register Card */}
-                <div className="bg-white rounded-2xl shadow-2xl p-8 backdrop-blur-lg bg-opacity-90">
-                    {error && (
-                        <div className="bg-red-50 border-l-4 border-red-500 text-red-700 p-4 rounded-lg mb-6">
-                            <div className="flex items-center">
-                                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-                                </svg>
-                                {error}
-                            </div>
-                        </div>
-                    )}
+                <motion.div
+                    className="bg-white/90 rounded-2xl shadow-2xl p-8 backdrop-blur-lg"
+                    variants={itemVariants}
+                    whileHover={{ boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.15)' }}
+                >
+                    <AnimatePresence mode="wait">
+                        {error && (
+                            <motion.div
+                                className="bg-red-50 border-l-4 border-red-500 text-red-700 p-4 rounded-lg mb-6"
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: -20 }}
+                            >
+                                <div className="flex items-center">
+                                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                                    </svg>
+                                    {error}
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
 
                     <form onSubmit={handleSubmit}>
-                        {step === 1 ? (
-                            <div className="space-y-5">
-                                <h2 className="text-2xl font-bold text-gray-900 mb-6">Create Your Account</h2>
+                        <AnimatePresence mode="wait">
+                            {step === 1 ? (
+                                <motion.div
+                                    key="step1"
+                                    className="space-y-5"
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: -20 }}
+                                    transition={{ duration: 0.3 }}
+                                >
+                                    <motion.h2 className="text-2xl font-bold text-gray-900 mb-6" variants={itemVariants}>
+                                        Create Your Account
+                                    </motion.h2>
 
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    <div>
-                                        <label className="block text-sm font-semibold text-gray-700 mb-2">First Name</label>
-                                        <input
+                                    <motion.div className="grid grid-cols-1 sm:grid-cols-2 gap-4" variants={containerVariants} initial="hidden" animate="visible">
+                                        <AnimatedInput
+                                            label="First Name"
                                             type="text"
                                             name="firstName"
                                             value={formData.firstName}
                                             onChange={handleChange}
-                                            className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                                             required
                                         />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-semibold text-gray-700 mb-2">Last Name</label>
-                                        <input
+                                        <AnimatedInput
+                                            label="Last Name"
                                             type="text"
                                             name="lastName"
                                             value={formData.lastName}
                                             onChange={handleChange}
-                                            className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                                             required
                                         />
-                                    </div>
-                                </div>
+                                    </motion.div>
 
-                                <div>
-                                    <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
-                                    <input
+                                    <AnimatedInput
+                                        label="Email Address"
                                         type="email"
                                         name="email"
                                         value={formData.email}
                                         onChange={handleChange}
-                                        className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                                        placeholder="you@example.com"
                                         required
                                     />
-                                </div>
 
-                                <div>
-                                    <label className="block text-sm font-semibold text-gray-700 mb-2">Password</label>
-                                    <input
+                                    <AnimatedInput
+                                        label="Password"
                                         type="password"
                                         name="password"
                                         value={formData.password}
                                         onChange={handleChange}
-                                        className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                                        placeholder="••••••••"
                                         required
                                     />
-                                </div>
 
-                                <button
-                                    type="button"
-                                    onClick={handleNext}
-                                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transform hover:scale-[1.02] transition-all shadow-lg"
+                                    <AnimatedButton
+                                        type="button"
+                                        variant="primary"
+                                        onClick={handleNext}
+                                        className="w-full justify-center"
+                                    >
+                                        Next Step →
+                                    </AnimatedButton>
+                                </motion.div>
+                            ) : (
+                                <motion.div
+                                    key="step2"
+                                    className="space-y-5"
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: -20 }}
+                                    transition={{ duration: 0.3 }}
                                 >
-                                    Next Step →
-                                </button>
-                            </div>
-                        ) : (
-                            <div className="space-y-5">
-                                <h2 className="text-2xl font-bold text-gray-900 mb-6">Complete Your Profile</h2>
+                                    <motion.h2 className="text-2xl font-bold text-gray-900 mb-6" variants={itemVariants}>
+                                        Complete Your Profile
+                                    </motion.h2>
 
-                                <div>
-                                    <label className="block text-sm font-semibold text-gray-700 mb-2">Date of Birth</label>
-                                    <input
+                                    <AnimatedInput
+                                        label="Date of Birth"
                                         type="date"
                                         name="dateOfBirth"
                                         value={formData.dateOfBirth}
                                         onChange={handleChange}
-                                        className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                                         required
                                     />
-                                </div>
 
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    <div>
-                                        <label className="block text-sm font-semibold text-gray-700 mb-2">Weight (kg)</label>
-                                        <input
+                                    <motion.div className="grid grid-cols-1 sm:grid-cols-2 gap-4" variants={containerVariants} initial="hidden" animate="visible">
+                                        <AnimatedInput
+                                            label="Weight (kg)"
                                             type="number"
                                             step="0.1"
                                             name="weight"
                                             value={formData.weight}
                                             onChange={handleChange}
-                                            className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                                             required
                                         />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-semibold text-gray-700 mb-2">Height (cm)</label>
-                                        <input
+                                        <AnimatedInput
+                                            label="Height (cm)"
                                             type="number"
                                             step="0.1"
                                             name="height"
                                             value={formData.height}
                                             onChange={handleChange}
-                                            className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                                             required
                                         />
-                                    </div>
-                                </div>
+                                    </motion.div>
 
-                                <div>
-                                    <label className="block text-sm font-semibold text-gray-700 mb-2">Gender</label>
-                                    <select
-                                        name="gender"
-                                        value={formData.gender}
-                                        onChange={handleChange}
-                                        className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                                    >
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                        <option value="Other">Other</option>
-                                    </select>
-                                </div>
+                                    <motion.div variants={itemVariants}>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-2">Gender</label>
+                                        <select
+                                            name="gender"
+                                            value={formData.gender}
+                                            onChange={handleChange}
+                                            className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-0 focus:border-blue-500 transition-all"
+                                        >
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </motion.div>
 
-                                <div>
-                                    <label className="block text-sm font-semibold text-gray-700 mb-2">Fitness Goal</label>
-                                    <select
-                                        name="fitnessGoal"
-                                        value={formData.fitnessGoal}
-                                        onChange={handleChange}
-                                        className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                                    >
-                                        <option value="Weight Loss">🔥 Weight Loss</option>
-                                        <option value="Muscle Gain">💪 Muscle Gain</option>
-                                        <option value="General Fitness">⚡ General Fitness</option>
-                                        <option value="Endurance">🏃 Endurance</option>
-                                    </select>
-                                </div>
+                                    <motion.div variants={itemVariants}>
+                                        <label className="block text-sm font-semibold text-gray-700 mb-2">Fitness Goal</label>
+                                        <select
+                                            name="fitnessGoal"
+                                            value={formData.fitnessGoal}
+                                            onChange={handleChange}
+                                            className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-0 focus:border-blue-500 transition-all"
+                                        >
+                                            <option value="WeightLoss">🔥 Weight Loss</option>
+                                            <option value="MuscleGain">💪 Muscle Gain</option>
+                                            <option value="GeneralFitness">⚡ General Fitness</option>
+                                            <option value="Endurance">🏃 Endurance</option>
+                                        </select>
+                                    </motion.div>
 
-                                <div className="flex gap-4">
-                                    <button
-                                        type="button"
-                                        onClick={handleBack}
-                                        className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-300 transition-all"
-                                    >
-                                        ← Back
-                                    </button>
-                                    <button
-                                        type="submit"
-                                        disabled={loading}
-                                        className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 disabled:opacity-50 transform hover:scale-[1.02] transition-all shadow-lg"
-                                    >
-                                        {loading ? 'Creating Account...' : 'Complete Registration'}
-                                    </button>
-                                </div>
-                            </div>
-                        )}
+                                    <motion.div className="flex gap-4" variants={itemVariants}>
+                                        <AnimatedButton
+                                            type="button"
+                                            variant="secondary"
+                                            onClick={handleBack}
+                                            className="flex-1 justify-center"
+                                        >
+                                            ← Back
+                                        </AnimatedButton>
+                                        <AnimatedButton
+                                            type="submit"
+                                            variant="primary"
+                                            disabled={loading}
+                                            className="flex-1 justify-center"
+                                        >
+                                            {loading ? 'Creating...' : 'Complete Registration'}
+                                        </AnimatedButton>
+                                    </motion.div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
                     </form>
 
-                    <div className="mt-6 text-center">
+                    <motion.div className="mt-6 text-center" variants={itemVariants}>
                         <p className="text-gray-600">
                             Already have an account?{' '}
                             <Link to="/login" className="font-semibold text-blue-600 hover:text-blue-700 transition-colors">
                                 Sign in
                             </Link>
                         </p>
-                    </div>
-                </div>
-            </div>
+                    </motion.div>
+                </motion.div>
+            </motion.div>
         </div>
     );
 };

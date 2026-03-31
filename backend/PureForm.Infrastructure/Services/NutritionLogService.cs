@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PureForm.Application.DTOs;
 using PureForm.Application.Interfaces;
+using PureForm.Application.Utilities;
 using PureForm.Domain.Entities;
+using PureForm.Domain.Enums;
 using PureForm.Infrastructure.Data;
 using PureForm.Infrastructure.Repositories;
 
@@ -47,11 +49,13 @@ public class NutritionLogService : INutritionLogService
 
     public async Task<NutritionLogDto> CreateAsync(int userId, CreateNutritionLogDto dto)
     {
+        var mealTypeEnum = EnumConverter.ParseMealType(dto.MealType) ?? MealType.Snack;
+
         var log = new NutritionLog
         {
             UserId = userId,
             LogDate = dto.LogDate,
-            MealType = dto.MealType,
+            MealType = mealTypeEnum,
             FoodName = dto.FoodName,
             Calories = dto.Calories,
             Protein = dto.Protein,
@@ -72,7 +76,9 @@ public class NutritionLogService : INutritionLogService
         if (log == null) return null;
 
         log.LogDate = dto.LogDate;
-        log.MealType = dto.MealType;
+        var mealTypeEnum = EnumConverter.ParseMealType(dto.MealType);
+        if (mealTypeEnum.HasValue)
+            log.MealType = mealTypeEnum.Value;
         log.FoodName = dto.FoodName;
         log.Calories = dto.Calories;
         log.Protein = dto.Protein;
@@ -117,7 +123,7 @@ public class NutritionLogService : INutritionLogService
         Id = log.Id,
         UserId = log.UserId,
         LogDate = log.LogDate,
-        MealType = log.MealType,
+        MealType = log.MealType.ToString(),
         FoodName = log.FoodName,
         Calories = log.Calories,
         Protein = log.Protein,
