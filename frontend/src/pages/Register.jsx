@@ -51,7 +51,7 @@ const Register = () => {
         e.preventDefault();
         setError('');
         setLoading(true);
-        toast.loading('Creating your account...');
+        const toastId = toast.loading('Creating your account...');
 
         const userData = {
             ...formData,
@@ -59,19 +59,24 @@ const Register = () => {
             height: parseFloat(formData.height)
         };
 
-        const result = await register(userData);
+        try {
+            const result = await register(userData);
 
-        if (result.success) {
-            toast.dismiss();
-            toast.success('Account created successfully! Welcome to PureForm!');
-            navigate('/dashboard');
-        } else {
+            if (result.success) {
+                toast.success('Account created successfully! Welcome to PureForm!', { id: toastId });
+                navigate('/dashboard');
+                return;
+            }
+
             setError(result.error);
-            toast.dismiss();
-            toast.error(result.error);
+            toast.error(result.error || 'Registration failed. Please try again.', { id: toastId });
+        } catch {
+            const fallbackMessage = 'Unable to create account right now. Please try again.';
+            setError(fallbackMessage);
+            toast.error(fallbackMessage, { id: toastId });
+        } finally {
+            setLoading(false);
         }
-
-        setLoading(false);
     };
 
     const containerVariants = {
@@ -95,17 +100,17 @@ const Register = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center p-4 relative overflow-hidden">
+        <div className="min-h-screen bg-linear-to-br from-slate-100 via-white to-blue-100 flex items-center justify-center p-4 relative overflow-hidden">
             {/* Animated background elements */}
             <motion.div
-                className="absolute top-0 left-0 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
+                className="absolute -top-16 -left-12 w-80 h-80 bg-blue-200 rounded-full blur-3xl opacity-35"
                 animate={{ y: [0, -50, 0] }}
-                transition={{ duration: 8, repeat: Infinity }}
+                transition={{ duration: 12, repeat: Infinity }}
             />
             <motion.div
-                className="absolute bottom-0 right-0 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
+                className="absolute -bottom-16 -right-12 w-80 h-80 bg-indigo-200 rounded-full blur-3xl opacity-35"
                 animate={{ y: [0, 50, 0] }}
-                transition={{ duration: 8, repeat: Infinity, delay: 1 }}
+                transition={{ duration: 12, repeat: Infinity, delay: 1.5 }}
             />
 
             <motion.div
@@ -117,16 +122,16 @@ const Register = () => {
                 {/* Logo/Brand */}
                 <motion.div className="text-center mb-8" variants={itemVariants}>
                     <motion.div
-                        className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl mb-4 shadow-lg"
+                        className="inline-flex items-center justify-center w-16 h-16 bg-linear-to-br from-blue-600 to-indigo-600 rounded-2xl mb-4 shadow-md"
                         animate={{ rotate: 360 }}
-                        transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                        transition={{ duration: 24, repeat: Infinity, ease: 'linear' }}
                     >
                         <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
                     </motion.div>
                     <motion.h1
-                        className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+                        className="text-4xl font-bold bg-linear-to-r from-slate-800 to-blue-700 bg-clip-text text-transparent"
                         initial={{ scale: 0.9 }}
                         animate={{ scale: 1 }}
                         transition={{ duration: 0.5 }}
@@ -178,14 +183,15 @@ const Register = () => {
 
                 {/* Register Card */}
                 <motion.div
-                    className="bg-white/90 rounded-2xl shadow-2xl p-8 backdrop-blur-lg"
+                    className="bg-white/95 border border-slate-200 rounded-2xl shadow-xl p-8"
                     variants={itemVariants}
-                    whileHover={{ boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.15)' }}
+                    whileHover={{ y: -2 }}
                 >
                     <AnimatePresence mode="wait">
                         {error && (
                             <motion.div
-                                className="bg-red-50 border-l-4 border-red-500 text-red-700 p-4 rounded-lg mb-6"
+                                role="alert"
+                                className="bg-red-50 border border-red-200 text-red-700 p-4 rounded-lg mb-6"
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: -20 }}

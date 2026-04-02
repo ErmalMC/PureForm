@@ -33,7 +33,7 @@ const AnimatedInput = ({
 
             <motion.div
                 className="relative"
-                animate={isFocused ? { scale: 1.01 } : { scale: 1 }}
+                animate={isFocused ? { y: -1 } : { y: 0 }}
                 transition={{ duration: 0.2 }}
             >
                 {Icon && (
@@ -57,7 +57,7 @@ const AnimatedInput = ({
                     placeholder={placeholder}
                     disabled={disabled}
                     autoComplete="off"
-                    className={`w-full px-4 py-3 ${Icon ? 'pl-12' : ''} bg-gray-50 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-0 focus:border-blue-500 focus:bg-white transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed ${className} ${
+                    className={`w-full px-4 py-3 ${Icon ? 'pl-12' : ''} bg-white border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed ${className} ${
                         error ? 'border-red-500 focus:border-red-500' : ''
                     }`}
                     {...props}
@@ -65,7 +65,7 @@ const AnimatedInput = ({
 
                 {isFocused && (
                     <motion.div
-                        className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full"
+                        className="absolute bottom-0 left-0 h-0.5 bg-linear-to-r from-blue-600 to-indigo-600 rounded-full"
                         initial={{ width: 0 }}
                         animate={{ width: '100%' }}
                         transition={{ duration: 0.3 }}

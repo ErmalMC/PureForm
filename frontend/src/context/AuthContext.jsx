@@ -1,16 +1,44 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState } from 'react';
 import { authApi } from '../api/authApi';
 import api from '../api/axiosConfig';
 
 const AuthContext = createContext(null);
 
+const parseStoredUser = () => {
+    const savedUser = localStorage.getItem('user');
+    if (!savedUser) {
+        return null;
+    }
+
+    try {
+        return JSON.parse(savedUser);
+    } catch {
+        localStorage.removeItem('user');
+        return null;
+    }
+};
+
+const parseAuthError = (error, fallbackMessage) => {
+    const responseData = error?.response?.data;
+
+    if (typeof responseData === 'string' && responseData.trim()) {
+        return responseData;
+    }
+
+    if (responseData?.message) {
+        return responseData.message;
+    }
+
+    if (responseData?.title) {
+        return responseData.title;
+    }
+
+    return error?.message || fallbackMessage;
+};
+
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(() => {
-        const savedUser = localStorage.getItem('user');
-        return savedUser ? JSON.parse(savedUser) : null;
-    });
+    const [user, setUser] = useState(parseStoredUser);
     const [token, setToken] = useState(() => localStorage.getItem('token'));
-    const [loading, setLoading] = useState(false);
 
     const login = async (email, password) => {
         try {
@@ -26,7 +54,7 @@ export const AuthProvider = ({ children }) => {
         } catch (error) {
             return {
                 success: false,
-                error: error.response?.data?.message || 'Login failed'
+                error: parseAuthError(error, 'Login failed. Please try again.')
             };
         }
     };
@@ -45,7 +73,7 @@ export const AuthProvider = ({ children }) => {
         } catch (error) {
             return {
                 success: false,
-                error: error.response?.data?.message || 'Registration failed'
+                error: parseAuthError(error, 'Registration failed. Please try again.')
             };
         }
     };
@@ -83,9 +111,6 @@ export const AuthProvider = ({ children }) => {
         isAuthenticated: !!token,
     };
 
-    if (loading) {
-        return <div>Loading...</div>;
-    }
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

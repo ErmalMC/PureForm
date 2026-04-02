@@ -25,8 +25,13 @@ api.interceptors.request.use(
 api.interceptors.response.use(
     (response) => response,
     (error) => {
-        if (error.response?.status === 401) {
-            // Token expired or invalid
+        const status = error.response?.status;
+        const requestUrl = error.config?.url || '';
+        const isAuthRoute = requestUrl.includes('/auth/login') || requestUrl.includes('/auth/register');
+        const hasToken = Boolean(localStorage.getItem('token'));
+
+        // Only force logout for authenticated requests; keep auth form errors local.
+        if (status === 401 && hasToken && !isAuthRoute) {
             localStorage.removeItem('token');
             localStorage.removeItem('user');
             window.location.href = '/login';
