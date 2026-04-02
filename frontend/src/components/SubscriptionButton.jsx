@@ -8,8 +8,7 @@ function SubscriptionButton({ userId }) {
         setLoading(true);
         try {
             const response = await api.post('/stripe/create-checkout-session', {
-                userId: userId,
-                priceId: 'price_1Sss8sDlMwMJ1RUdfPnx4pT9'
+                userId: userId
             });
 
             const { url } = response.data;

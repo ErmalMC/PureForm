@@ -85,8 +85,9 @@ const Login = () => {
                 <motion.div className="text-center mb-8" variants={itemVariants}>
                     <motion.div
                         className="inline-flex items-center justify-center w-16 h-16 bg-linear-to-br from-blue-600 to-indigo-600 rounded-2xl mb-4 shadow-md"
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 24, repeat: Infinity, ease: 'linear' }}
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.45 }}
                     >
                         <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />

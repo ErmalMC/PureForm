@@ -10,15 +10,15 @@ const Upgrade = () => {
     const handleUpgrade = async () => {
         try {
             const response = await api.post('/stripe/create-checkout-session', {
-                userId: user.id,
-                priceId: 'price_1Sss8sDlMwMJ1RUdfPnx4pT9'
+                userId: user.id
             });
 
             const { url } = response.data;
             window.location.href = url;
         } catch (error) {
             console.error('Error:', error);
-            alert('Failed to start checkout. Please try again.');
+            const serverMessage = error?.response?.data?.error || error?.response?.data?.message;
+            alert(serverMessage || 'Failed to start checkout. Please try again.');
         }
     };
 

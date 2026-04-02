@@ -13,6 +13,7 @@ public class StripeService : IStripeService
     private readonly IRepository<User> _userRepository;
     private readonly IRepository<StripeSubscription> _subscriptionRepository;
     private readonly string _webhookSecret;
+    private readonly string _defaultPriceId;
 
     public StripeService(
         IRepository<User> userRepository,
@@ -26,15 +27,28 @@ public class StripeService : IStripeService
                          ?? configuration["Stripe:WebhookSecret"]
                          ?? "";
 
+        _defaultPriceId = Environment.GetEnvironmentVariable("STRIPE_PRICEID")
+                          ?? configuration["Stripe:PriceId"]
+                          ?? "";
+
         StripeConfiguration.ApiKey = Environment.GetEnvironmentVariable("STRIPE_SECRETKEY")
                                      ?? configuration["Stripe:SecretKey"]
                                      ?? throw new Exception("Stripe API key not configured");
     }
 
-    public async Task<string> CreateCheckoutSessionAsync(int userId, string priceId)
+    public async Task<string> CreateCheckoutSessionAsync(int userId, string? priceId)
     {
         var user = await _userRepository.GetByIdAsync(userId);
         if (user == null) throw new Exception("User not found");
+
+        var resolvedPriceId = !string.IsNullOrWhiteSpace(priceId)
+            ? priceId
+            : _defaultPriceId;
+
+        if (string.IsNullOrWhiteSpace(resolvedPriceId))
+        {
+            throw new Exception("Stripe price id not configured");
+        }
 
         var frontendUrl = Environment.GetEnvironmentVariable("FRONTEND_URL")
                           ?? "http://localhost:5173";
@@ -46,7 +60,7 @@ public class StripeService : IStripeService
             {
                 new()
                 {
-                    Price = priceId,
+                    Price = resolvedPriceId,
                     Quantity = 1
                 }
             },

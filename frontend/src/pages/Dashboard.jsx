@@ -70,7 +70,7 @@ const Dashboard = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+        <div className="min-h-screen bg-linear-to-br from-blue-50 via-white to-purple-50">
             {/* Navbar */}
             <Navbar/>
 
@@ -103,7 +103,7 @@ const Dashboard = () => {
 
                 {/* Stats Cards */}
                 <motion.div
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 auto-rows-fr gap-6 mb-8"
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
@@ -141,91 +141,100 @@ const Dashboard = () => {
                 {/* Premium Banner */}
                 {!user.isPremium && (
                     <motion.div
-                        className="bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 rounded-2xl shadow-2xl p-8 mb-8 text-white relative overflow-hidden group"
+                        className="rounded-2xl shadow-lg p-[1px] mb-8 bg-linear-to-r from-amber-200 via-orange-200 to-pink-200"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.4 }}
-                        whileHover={{ boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.3)' }}
+                        whileHover={{ y: -1 }}
                     >
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 group-hover:scale-110 transition-transform duration-300"></div>
-                        <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full -ml-24 -mb-24 group-hover:scale-110 transition-transform duration-300"></div>
-
-                        <div className="relative z-10">
-                            <motion.div
-                                className="flex items-center gap-3 mb-4"
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 0.5 }}
-                            >
-                                <motion.span
-                                    className="text-4xl"
-                                    animate={{ rotate: [0, 10, -10, 0] }}
-                                    transition={{ duration: 2, repeat: Infinity }}
-                                >
-                                    ⭐
-                                </motion.span>
-                                <h3 className="text-3xl font-bold">Unlock Premium Features</h3>
-                            </motion.div>
-
-                            <motion.p
-                                className="text-lg mb-6 text-white/90"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.6 }}
-                            >
-                                Get powered meal plans, advanced nutrition tracking, personalized workout
-                                adjustments, and priority support!
-                            </motion.p>
-
-                            <motion.div
-                                className="flex flex-wrap gap-4 mb-6"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.7 }}
-                            >
-                                {[
-                                    'Custom Meal Plans',
-                                    'Advanced Analytics',
-                                    'Priority Support'
-                                ].map((feature, index) => (
+                        <div className="bg-white rounded-2xl p-6 md:p-8">
+                            <div className="grid gap-8 lg:grid-cols-[1.6fr_1fr] lg:items-center">
+                                <div className="space-y-5">
                                     <motion.div
-                                        key={feature}
-                                        className="flex items-center gap-2"
-                                        initial={{ opacity: 0, x: -10 }}
+                                        className="flex items-center gap-3"
+                                        initial={{ opacity: 0, x: -20 }}
                                         animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: 0.7 + index * 0.1 }}
+                                        transition={{ delay: 0.5 }}
                                     >
-                                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fillRule="evenodd"
-                                                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                                  clipRule="evenodd"/>
-                                        </svg>
-                                        <span className="font-medium">{feature}</span>
+                                        <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-700 text-sm font-semibold">
+                                            <SparklesIcon className="w-4 h-4" />
+                                            Premium Plan
+                                        </span>
+                                        <span className="text-sm font-semibold text-slate-500">$9.99/month</span>
                                     </motion.div>
-                                ))}
-                            </motion.div>
 
-                            <AnimatedButton
-                                variant="primary"
-                                onClick={async () => {
-                                    try {
-                                        const response = await api.post('/stripe/create-checkout-session', {
-                                            userId: user.id,
-                                            priceId: 'price_1Sss8sDlMwMJ1RUdfPnx4pT9'
-                                        });
+                                <motion.h3
+                                    className="text-2xl md:text-3xl font-bold text-slate-900 leading-tight"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ delay: 0.55 }}
+                                >
+                                    Unlock Premium Features for Faster Results
+                                </motion.h3>
 
-                                        const {url} = response.data;
-                                        window.location.href = url;
-                                    } catch (error) {
-                                        console.error('Error:', error);
-                                        toast.error('Failed to start checkout. Please try again.');
-                                    }
-                                }}
-                                className="bg-white text-orange-600 hover:bg-gray-100"
-                                icon={SparklesIcon}
-                            >
-                                Upgrade to Premium - $9.99/month
-                            </AnimatedButton>
+                                <motion.p
+                                    className="text-slate-600 max-w-2xl"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ delay: 0.6 }}
+                                >
+                                    Personalized nutrition and smarter progress tracking, all in one place. Stay
+                                    consistent with data-backed guidance built around your goal.
+                                </motion.p>
+
+                                <motion.div
+                                    className="grid sm:grid-cols-2 gap-3"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ delay: 0.7 }}
+                                >
+                                    {['Custom Meal Plans', 'Advanced Analytics', 'Priority Support'].map((feature, index) => (
+                                        <motion.div
+                                            key={feature}
+                                            className="flex items-center gap-2 rounded-xl bg-slate-50 border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700"
+                                            initial={{ opacity: 0, y: 8 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: 0.7 + index * 0.08 }}
+                                        >
+                                            <CheckCircleIcon className="w-4 h-4 text-emerald-600" />
+                                            <span>{feature}</span>
+                                        </motion.div>
+                                    ))}
+                                </motion.div>
+                                </div>
+
+                                <motion.div
+                                    className="rounded-2xl border border-slate-200 bg-slate-50 p-5 md:p-6"
+                                    initial={{ opacity: 0, x: 16 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: 0.75 }}
+                                >
+                                    <p className="text-sm font-semibold text-slate-500 mb-1">Start Premium</p>
+                                    <p className="text-3xl font-bold text-slate-900 mb-4">$9.99<span className="text-base font-medium text-slate-500"> / month</span></p>
+                                    <AnimatedButton
+                                        variant="primary"
+                                        onClick={async () => {
+                                            try {
+                                                const response = await api.post('/stripe/create-checkout-session', {
+                                                    userId: user.id
+                                                });
+
+                                                const { url } = response.data;
+                                                window.location.href = url;
+                                            } catch (error) {
+                                                console.error('Error:', error);
+                                                    const serverMessage = error?.response?.data?.error || error?.response?.data?.message;
+                                                    toast.error(serverMessage || 'Failed to start checkout. Please try again.');
+                                            }
+                                        }}
+                                        className="w-full justify-center"
+                                        icon={SparklesIcon}
+                                    >
+                                        Upgrade Now
+                                    </AnimatedButton>
+                                    <p className="text-xs text-slate-500 mt-3 text-center">Cancel anytime</p>
+                                </motion.div>
+                            </div>
                         </div>
                     </motion.div>
                 )}
@@ -298,9 +307,9 @@ const Dashboard = () => {
                         transition={{ delay: 0.6 }}
                     >
                         <motion.div
-                            className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full mb-6"
-                            animate={{ rotate: 360 }}
-                            transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                            className="inline-flex items-center justify-center w-24 h-24 bg-linear-to-br from-blue-100 to-purple-100 rounded-full mb-6"
+                            animate={{ y: [0, -4, 0] }}
+                            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
                         >
                             <ClipboardDocumentListIcon className="w-12 h-12 text-blue-600" />
                         </motion.div>
@@ -345,7 +354,7 @@ const Dashboard = () => {
                             {workoutPlans.slice(0, 3).map((plan, index) => (
                                 <motion.div
                                     key={plan.id}
-                                    className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-4 border-2 border-gray-100 hover:border-blue-500 transition-all cursor-pointer"
+                                    className="bg-linear-to-br from-blue-50 to-purple-50 rounded-xl p-4 border-2 border-gray-100 hover:border-blue-500 transition-all cursor-pointer"
                                     onClick={() => navigate('/workouts')}
                                     whileHover={{ scale: 1.02, y: -4 }}
                                     initial={{ opacity: 0, y: 10 }}

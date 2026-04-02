@@ -48,5 +48,5 @@ namespace PureForm.WebAPI.Controllers
         }
     }
 
-    public record CreateCheckoutRequest(int UserId, string PriceId);
+    public record CreateCheckoutRequest(int UserId, string? PriceId);
 }
