@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: pureform-api
+    env: docker
+    dockerfilePath: ./Dockerfile
+    autoDeploy: true
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: JWT_KEY
+        sync: false
+      - key: JWT_ISSUER
+        value: PureFormAPI
+      - key: JWT_AUDIENCE
+        value: PureFormClient
+      - key: FRONTEND_URL
+        sync: false
+      - key: PGHOST
+        sync: false
+      - key: PGPORT
+        value: "5432"
+      - key: PGDATABASE
+        sync: false
+      - key: PGUSER
+        sync: false
+      - key: PGPASSWORD
+        sync: false
