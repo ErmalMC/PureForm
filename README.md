@@ -9,7 +9,7 @@ A modern full-stack fitness and nutrition tracking platform built with .NET 8 an
 ## 🎯 Key Features
 
 - **Workout Management**: Custom routines, exercise logging with sets/reps/weight, progress tracking with visual charts
-- **Nutrition Tracking**: 100+ food database, smart search, meal logging by type, AI-powered macro calculator
+- **Nutrition Tracking**: 100+ food database, smart search, meal logging by type, Algorithm-powered macro calculator
 - **Progress Analytics**: Body metrics tracking, trend analysis, goal achievement system with visual dashboards
 - **Modern UX**: Responsive design, real-time updates, intuitive interface with micro-interactions
 
